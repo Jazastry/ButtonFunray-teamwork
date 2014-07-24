@@ -2,6 +2,7 @@ var clicktElement;
 var clicketParent;
 var shipsOrdin = ['horizont', 'vertical'];
 var playerField = [];
+var playerShips = [4,3,3,2,2,2,1,1,1,1];
 
 function myFunction(e) {
 
@@ -18,21 +19,27 @@ function createPlayFields() {
 
 	function initialPLayerField(){
 
+
 		for (var i = 0; i < 144; i++) {
 	
 			playerField[i] = 0;
 		};
 
-		
+		for (var i = 0; i < 10; i++) {
+			
+			showPrompt();
+		};
 
 	}
 	function showPrompt() {
 
-		
+
+		document.getElementById('playerFieldPrompt').style.display = 'block';
+
 	}
 }
 
-function shipForHorizont(lenght, startElement, shipOrdin){
+function shipDisplay(lenght, startElement, shipOrdin){
 
 	if(shipOrdin === 'horizont') {
 
