@@ -1,0 +1,38 @@
+/*in keyframes for some reason background-position must be -935px 
+if the animation is executed at any div in field1 or field2*/
+.bye {
+    width: 37px;
+    height: 37px;
+    background-image: url("fire.png");
+    
+    -webkit-animation: fire 1.6s steps(25) infinite;
+       -moz-animation: fire 1.6s steps(25) infinite;
+        -ms-animation: fire 1.6s steps(25) infinite;
+         -o-animation: fire 1.6s steps(25) infinite;
+            animation: fire 1.6s steps(25) infinite;
+}
+
+@-webkit-keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; }
+}
+
+@-moz-keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; }
+}
+
+@-ms-keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; }
+}
+
+@-o-keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; }
+}
+
+@keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; } 
+}
