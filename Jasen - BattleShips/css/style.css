@@ -13,13 +13,15 @@ html {
     background-size: 100% 100%;
     position: relative; }
     html body #wrapper {
-      width: 1300px;
-      height: 480px; }
+      width: 1050px;
+      height: 490px;
+      border: 1px solid #FF0000;
+      margin: 0px auto; }
       html body #wrapper #field1 {
         width: 500px;
-        height: 280px;
+        height: 285px;
         margin-top: 20px;
-        margin-left: 90px;
+        margin-left: 0px;
         display: inline-block; }
         html body #wrapper #field1 div {
           width: 38px;
@@ -35,7 +37,7 @@ html {
         width: 500px;
         height: 500px;
         margin-top: 20px;
-        margin-left: 90px;
+        margin-left: 40px;
         display: inline-block; }
         html body #wrapper #field2 div {
           width: 38px;
@@ -49,7 +51,7 @@ html {
           background: rgba(255, 255, 255, 0.3); }
     html body #playerFieldPrompt {
       position: absolute;
-      top: 500px;
+      top: 200px;
       left: 150px;
       width: 300px;
       height: 100px;

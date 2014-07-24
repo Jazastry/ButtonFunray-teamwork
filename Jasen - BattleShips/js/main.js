@@ -11,7 +11,7 @@ function myFunction(e) {
     //alert(parseInt(clicktElement)+1);
 
 
-    shipForHorizont(2, clicktElement, shipsOrdin[1]);
+    shipForHorizont(4, clicktElement, shipsOrdin[0]);
     
 }
 
@@ -26,6 +26,10 @@ function createPlayFields() {
 
 		
 
+	}
+	function showPrompt() {
+
+		
 	}
 }
 
