@@ -1,30 +1,60 @@
-html, body, canvas {
-	margin: 0px;
-	padding: 0px;
-}
+html, body, div {
+  margin: 0px;
+  padding: 0px; }
 
 html {
-	font-size: 62.5%;i
-	width: 100%;
-	height: 100%;
-}
-body {
-	width: 100%;
-	height: 100%;
-	background-image: url('../images/seaBackground.jpg');
-}
-
-#mainCanvas {	
-	width: 1100px;
-	height: 500px;
-	border: 1px solid #d3d3d3;
-	margin: 2rem 3rem;
-	padding: 2rem;
-	background: transparent;
-}
-
-#battleField1 {
-	width: 500px;
-	height: 500px;
-	border: 1px solid red;
-}
+  font-size: 62.5%;
+  width: 100%;
+  height: 100%; }
+  html body {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/ocean.jpg");
+    background-size: 100% 100%;
+    position: relative; }
+    html body #wrapper {
+      width: 1300px;
+      height: 480px; }
+      html body #wrapper #field1 {
+        width: 500px;
+        height: 280px;
+        margin-top: 20px;
+        margin-left: 90px;
+        display: inline-block; }
+        html body #wrapper #field1 div {
+          width: 38px;
+          height: 37px;
+          display: inline-block;
+          outline: 1px solid #000;
+          margin-right: -1px;
+          background: transparent;
+          cursor: pointer; }
+        html body #wrapper #field1 div:active {
+          background: rgba(255, 255, 255, 0.3); }
+      html body #wrapper #field2 {
+        width: 500px;
+        height: 500px;
+        margin-top: 20px;
+        margin-left: 90px;
+        display: inline-block; }
+        html body #wrapper #field2 div {
+          width: 38px;
+          height: 37px;
+          display: inline-block;
+          outline: 1px solid #000;
+          margin-right: -1px;
+          cursor: pointer;
+          background: rgba(255, 255, 255, 0.6); }
+        html body #wrapper #field2 div:active {
+          background: rgba(255, 255, 255, 0.3); }
+    html body #playerFieldPrompt {
+      position: absolute;
+      top: 500px;
+      left: 150px;
+      width: 300px;
+      height: 100px;
+      font-size: 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+      padding: 1rem;
+      display: none; }
