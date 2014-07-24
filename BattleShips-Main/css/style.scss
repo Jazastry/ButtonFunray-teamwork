@@ -67,12 +67,13 @@ html {
 			top: 200px;
 			left: 150px;
       width: 300px;
-      height: 100px;
+      height: 150px;
       font-size: 2rem;
       background: rgba(255,255,255,0.9);
       border-radius: 5px;
       padding: 1rem;
       display: none;
+      z-index: 50;
         ul {
           list-style: none;
             li {
@@ -102,6 +103,15 @@ html {
       background: url("../images/rightGun.png"), url("../images/leftGun.png"), no-repeat;
       background-repeat: no-repeat;
       background-position: 00, 794px 0;
+    }
+
+    #cover {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      position: absolute;
+      display: none;
+      z-index: 1;
     }
     // #div1 {width:150px;height:30px;padding:10px;border:1px solid #aaaaaa;}
     // #1a{background: url('../images/shipFront.png');z-index: 50;}
