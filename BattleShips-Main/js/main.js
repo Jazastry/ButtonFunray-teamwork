@@ -6,6 +6,8 @@ var playerShips = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
 var playerSipOrientation = 0;
 var currentShip = 0;
 var counter = 0;
+var player1score = 12;
+var player2score = 0;
 
 function myFunction(e) {
 
@@ -154,3 +156,7 @@ function shipDisplay(lenght, startElement, shipOrdin){
 	}
 }
 
+
+//scoreboard  func
+document.getElementById('player1').value = player1score + " / " + 20;
+document.getElementById('player2').value = player2score + " / " + 20;

@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Battle Ships</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/score.css">
     </head>
     <body onload="createPlayFields()">
     <div id='wrapper'>
@@ -311,7 +312,18 @@
               </ul>
         </div>
     </div>
-
+    <div id="scoreBoard">
+        <form>
+            <header>
+                <img src="images/Pirate_sword.gif" width="40" alt="img">
+                <span>Score</span>
+                <img src="images/crossed_guns-2.gif" width="40" alt="img">
+            </header>
+            <input type="text" id="player1" value = "0/20" disabled="true">
+            -
+            <input type="text" id="player2" value = "0/20" disabled="true">
+        </form>
+    </div>
         <script src="js/main.js"></script>
     </body>
 </html>
