@@ -21,7 +21,6 @@ function newFilledArray(length, value) {
     return arr;
 }
 
-
 function myFunction(e) {
 
 	clicktElement = e.target.id;
@@ -363,6 +362,37 @@ function initialCompField() {
         
         computerField[i] = 0;
     };
+    //chetvorka
+    computerField[1] = 1;
+    computerField[2] = 1;
+    computerField[3] = 1;
+    computerField[4] = 1;
+    //purva 3ka
+    computerField[18] = 1;
+    computerField[30] = 1;
+    computerField[42] = 1;
+    //vtora 3ka
+    computerField[49] = 1;
+    computerField[50] = 1;
+    computerField[51] = 1;
+    //purva 2ka
+    computerField[77] = 1;
+    computerField[89] = 1;
+    //vtora 2ka
+    computerField[125] = 1;
+    computerField[126] = 1;
+    //treta 2ka
+    computerField[77] = 1;
+    computerField[89] = 1;
+    //purva 1ca
+    computerField[110] = 1;
+    //vtora 1ca
+    computerField[58] = 1;
+    //treta 1ca
+    computerField[143] = 1;
+    //chetvurta 1ca
+    computerField[12] = 1;
+
 
     var initialCompShipsDirection = Math.floor(((Math.random() * 10) +1) % 2);
     
