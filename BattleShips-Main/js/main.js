@@ -102,7 +102,7 @@ function checkForMistakes(cl) {
                  cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46  ||
                  cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
                  cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
-              || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {                 
+              || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {
                  alert('Wrong FIeld Try Another One');
 
                  right = false;
