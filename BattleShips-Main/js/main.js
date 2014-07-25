@@ -7,6 +7,7 @@ var playerShips = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
 var playerShipOrientation = 0;
 var currentShip = 0;
 var counter = 0;
+var playerTurn = 0;
 var player1score = 12;
 var player2score = 0;
 var shipArrayPlayer1 = newFilledArray(144,0);
@@ -215,6 +216,59 @@ function checkForMistakes(cl) {
     }
         return right;
 }
+
+
+
+
+//LOGIKATA na IGRATA SLED START-a
+
+// computerField -> 0-epmty non-clicket (white-transperant);
+//                 1-ship - non-clicket (white-transperant);
+//                  2 ship-damaged (red);
+//                  3 empty - clicket (transperant);
+//                   4 ship-sinket (black)
+
+function gameAction() {
+    if(playerTurn = 1) {
+        computerShoot();
+    }
+    else if(playerTurn == 0){
+        playerShoot();
+    }
+}
+
+function playerShoot() {
+    playerTurn == 1;
+}
+
+function computerShoot() {
+
+    var curentCompShoot = Math.floor(Math.random() * 144);
+
+    if (playerField[curentCompShoot] == 0) {
+
+        playerField[curentCompShoot] = 3;
+
+        document.getElementById(curentCompShoot).style.background = '#FFF';
+
+    }
+    if (playerField[curentCompShoot] == 1) {
+
+        playerField[curentCompShoot] = 2;
+        player2score++;
+        document.getElementById('player2').value = player2score + " / " + 20;
+        document.getElementById(curentCompShoot).style.background = '#FF0000';
+
+    }
+    if (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4) {
+        computerShoot();
+    }
+
+    playerTurn = 0;
+}
+
+
+
 
 
 function createPlayFields() {
