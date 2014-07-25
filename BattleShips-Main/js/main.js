@@ -65,13 +65,11 @@ function checkForMistakes(cl) {
 
         } else if (currentShip == 1 || currentShip == 2) {
 
-             if  ((cl == 69 || cl == 81 || cl == 93 || cl == 105 || cl == 117 ||
-                 cl == 9 || cl == 21 || cl == 33 || cl == 45 || cl == 57 ||
-                 cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
+             if  ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
                  cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 ||
                  cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46	||
                  cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
-                 cl == 130 || cl == 142 || cl == 129 || cl == 141) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
+                 cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
               || (playerField[parseInt(cl) + 2] !== 0))) {
 
                  
