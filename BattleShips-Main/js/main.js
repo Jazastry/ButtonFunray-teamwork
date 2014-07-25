@@ -43,6 +43,10 @@ function myFunction(e) {
 
    if (checkForMistakes(clicktElement)) {
 
+        if (counter == 10) {
+
+            counter += 1;
+        };
         if ((counter < 11) && (clicktParent !== 'field2')) {
 
             shipDisplay(playerShips[currentShip], clicktElement, shipsOrdin[playerShipOrientation]);
@@ -52,11 +56,12 @@ function myFunction(e) {
             createPlayFields();
 
             }
-        } else {
-  
-            playerShoot(clicktElement);
         }
     } 
+    if ( clicktParent == 'field2') {
+
+        playerShoot(clicktElement);
+    }
 }
 
 function checkForMistakes(cl) {
@@ -357,10 +362,7 @@ function playerShipOrient(e) {
     if( counter != 0) {
 
        currentShip += 1;    
-
     }
-    
-    counter += 1;
 
     return;
 }
@@ -443,6 +445,8 @@ function shipDisplay(length, startElement, shipOrdin){
             document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/shipFrontVert.png')";
         }
     }
+    counter += 1;
+
 }
 
 function computerFieldCreation() {
