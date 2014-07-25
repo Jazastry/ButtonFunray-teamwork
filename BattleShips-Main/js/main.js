@@ -12,6 +12,9 @@ var player2score = 0;
 var shipArrayPlayer1 = newFilledArray(144,0);
 var shipArrayPlayer2 = newFilledArray(144,0);
 
+
+// computerField -> 0-epmty non-clicket (white-transperant); 1-ship - non-clicket (white-transperant);
+//                  2 ship-damaged (red); 3 empty - clicket (transperant); 4 ship-sinket (black)
 //tazi funkciq pulni array s daden value
 function newFilledArray(length, value) {
     var arr = new Array(length);
