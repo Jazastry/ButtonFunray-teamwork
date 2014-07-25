@@ -47,7 +47,6 @@ function checkForMistakes(cl) {
 
 	var right;
 
-
 	if(playerShipOrientation == 0) {
 
 		if(currentShip == 0) {
@@ -225,6 +224,7 @@ function createPlayFields() {
 function initialPLayerField(){		
 
 	if (counter == 0) {	
+
 		for (var i = 0; i < 144; i++) {
 	
 			playerField[i] = 0;
@@ -355,6 +355,21 @@ function shipDisplay(length, startElement, shipOrdin){
 function computerFieldCreation() {
 
 
+}
+
+function initialCompField() {
+
+    for (var i = 0; i < 144; i++) {
+        
+        computerField[i] = 0;
+    };
+
+    var initialCompShipsDirection = Math.floor(((Math.random() * 10) +1) % 2);
+    
+    for (var i = 0; i < playerShips.length ; i++) {
+        
+
+    };
 }
 //scoreboard  func
 // document.getElementById('player1').value = player1score + " / " + 20;
