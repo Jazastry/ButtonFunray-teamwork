@@ -7,6 +7,7 @@ var playerShips = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
 var playerShipOrientation = 0;
 var currentShip = 0;
 var counter = 0;
+var playerTurn = 0; 
 var player1score = 12;
 var player2score = 0;
 var shipArrayPlayer1 = newFilledArray(144,0);
@@ -40,8 +41,11 @@ function myFunction(e) {
             createPlayFields();
 
             }
+        } else {
+
+            gameAction();
+
         }
-    } 
 }
 
 function checkForMistakes(cl) {
@@ -351,6 +355,30 @@ function shipDisplay(length, startElement, shipOrdin){
 			document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/shipFrontVert.png')";
 		}
 	}
+}
+
+function gameAction() {
+
+}
+
+// computerField -> 0-epmty non-clicket (white-transperant); 
+//                 1-ship - non-clicket (white-transperant);
+//                  2 ship-damaged (red); 
+//                  3 empty - clicket (transperant);
+//                   4 ship-sinket (black)
+
+function computerShoot() {
+
+     var curentCompShoot = Math.floor(Math.random() * 144);
+
+     if (playerField[curentCompShoot] == 0) {
+
+        playerField[curentCompShoot] = 3;
+
+        document.getElementById(curentCompShoot).style.background = '#FFF';
+
+     };
+
 }
 
 function computerFieldCreation() {
