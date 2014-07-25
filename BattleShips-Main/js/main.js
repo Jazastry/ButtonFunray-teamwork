@@ -26,6 +26,27 @@ function newFilledArray(length, value) {
     return arr;
 }
 
+
+//coloring computerField when player shoot
+initialCompField();
+
+function attack(e) {
+    attackedZone = e.target.id;
+    if(computerField[parseInt(attackedZone)] == 1) {
+        document.getElementById(attackedZone).style.backgroundColor = "red";
+        computerField[parseInt(attackedZone)] = 2;
+    } else if(computerField[parseInt(attackedZone)] == 0) {
+        document.getElementById(attackedZone).style.backgroundColor = 'transparent';
+        computerField[parseInt(attackedZone)] = 3;        
+    } else if(computerField[parseInt(attackedZone)] == 2) {
+        alert('already attacked this zone');
+    } else if(computerField[parseInt(attackedZone)] == 3) {
+        alert('already attacked this zone');
+    } else if(computerField[parseInt(attackedZone)] == 4) {
+        alert('already attacked this zone');
+    }
+}
+
 function myFunction(e) {
 
     clicktElement = e.target.id;
