@@ -49,7 +49,7 @@ function checkForMistakes(cl) {
                 cl == 130 || cl == 131 || cl == 132 || cl == 141 || cl == 142 || cl == 143 ||                 
                 cl == 69 || cl == 81 || cl == 93 || cl == 105 || cl == 117 ||
                 cl == 9 || cl == 21 || cl == 33 || cl == 45 || cl == 57 ||
-                cl == 129 || cl == 141) {
+                cl == 129 || cl == 141 || cl == 'wrapper' || cl == 'field1') {
 
 
                 alert('Wrong FIeld Try Another One');
@@ -70,7 +70,7 @@ function checkForMistakes(cl) {
                  cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46	||
                  cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
                  cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
-              || (playerField[parseInt(cl) + 2] !== 0))) {
+              || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {
 
                  
 
@@ -90,7 +90,8 @@ function checkForMistakes(cl) {
 
             if ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
                  cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 || cl == 143) 
-                 || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0))) {
+                 || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0) ||
+                    cl == 'wrapper' || cl == 'field1')) {
                  
                 alert('Wrong FIeld Try Another One');
 
@@ -131,7 +132,7 @@ function checkForMistakes(cl) {
                 cl == 124 || cl == 123 || cl == 122 || cl == 121 || cl == 120 ||
                 cl == 119 || cl == 118 || cl == 117 || cl == 116 || cl == 115 ||
                 cl == 114 || cl == 113 || cl == 112 || cl == 111 || cl == 110 ||
-                cl == 109 || cl == 108) {
+                cl == 109 || cl == 108 || cl == 'wrapper' || cl == 'field1') {
 
                 alert('Wrong FIeld Try Another One');
 
@@ -151,7 +152,8 @@ function checkForMistakes(cl) {
                 cl == 134 || cl == 133 || cl == 132 || cl == 131 || cl == 130 ||
                 cl == 129 || cl == 128 || cl == 127 || cl == 126 || cl == 125 ||
                 cl == 124 || cl == 123 || cl == 122 || cl == 121) || ((playerField[parseInt(cl)] !== 0) || 
-                (playerField[parseInt(cl) + 12] !== 0) || (playerField[parseInt(cl) + 24] !== 0))) {
+                (playerField[parseInt(cl) + 12] !== 0) || (playerField[parseInt(cl) + 24] !== 0) ||
+                cl == 'wrapper' || cl == 'field1')) {
 
                 alert('Wrong FIeld Try Another One');
 
@@ -169,7 +171,7 @@ function checkForMistakes(cl) {
             if  ((cl == 143 || cl == 142 || cl == 141 || cl == 141 || cl == 140 ||
                 cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
                 cl == 134 || cl == 133) || ((playerField[parseInt(cl)] !== 0) || 
-                (playerField[parseInt(cl) + 12] !== 0))) {
+                (playerField[parseInt(cl) + 12] !== 0) || cl == 'wrapper' || cl == 'field1')) {
 
                 alert('Wrong FIeld Try Another One');
 
@@ -184,7 +186,7 @@ function checkForMistakes(cl) {
 
         } else if (currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
 
-            if  (playerField[parseInt(cl)] !== 0) {
+            if  (playerField[parseInt(cl)] !== 0 || cl == 'wrapper' || cl == 'field1') {
 
                 alert('Wrong FIeld Try Another One');
 
