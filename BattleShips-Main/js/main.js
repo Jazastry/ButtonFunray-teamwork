@@ -97,10 +97,7 @@ function checkForMistakes(cl) {
                  cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46  ||
                  cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
                  cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
-              || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {
-
-                 
-
+              || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {                 
                  alert('Wrong FIeld Try Another One');
 
                  right = false;
@@ -253,27 +250,33 @@ function gameAction() {
 }
 
 function playerShoot(e) {
-
     attackedZone = e;
-
-    if(computerField[parseInt(attackedZone)] == 1) {
-
-        document.getElementById(attackedZone).style.backgroundColor = "red";
-        computerField[parseInt(attackedZone)] = 2;
-
-    } else if(computerField[parseInt(attackedZone)] == 0) {
-
-        document.getElementById(attackedZone).style.backgroundColor = 'transparent';
-        computerField[parseInt(attackedZone)] = 3;
-
-    } else if(computerField[parseInt(attackedZone)] == 2) {
-        alert('already attacked this zone');
-    } else if(computerField[parseInt(attackedZone)] == 3) {
-        alert('already attacked this zone');
-    } else if(computerField[parseInt(attackedZone)] == 4) {
-        alert('already attacked this zone');
+    if( attackedZone == 'wrapper' || attackedZone == 'field2') {
+        alert('not a valid field');
     }
-    playerTurn = 1;
+    else {
+
+        if (computerField[parseInt(attackedZone)] == 1) {
+
+            document.getElementById(attackedZone).style.backgroundColor = "red";
+            computerField[parseInt(attackedZone)] = 2;
+            playerTurn = 1;
+
+        } else if (computerField[parseInt(attackedZone)] == 0) {
+
+            document.getElementById(attackedZone).style.backgroundColor = 'transparent';
+            computerField[parseInt(attackedZone)] = 3;
+            playerTurn = 1;
+
+        } else if (computerField[parseInt(attackedZone)] == 2) {
+            alert('already attacked this zone');
+        } else if (computerField[parseInt(attackedZone)] == 3) {
+            alert('already attacked this zone');
+        } else if (computerField[parseInt(attackedZone)] == 4) {
+            alert('already attacked this zone');
+        }
+    }
+
 }
 
 function computerShoot() {
