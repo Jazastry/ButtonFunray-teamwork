@@ -15,7 +15,7 @@ function myFunction(e) {
     clicketParent = e.target.parentNode.id;
 
     //alert('counter' + counter);
-
+    checkForMistakes(clicktElement);
     if ((counter < 11)) {
 
 	    shipDisplay(playerShips[currentShip], clicktElement, shipsOrdin[playerShipOrientation]);
@@ -32,13 +32,15 @@ function checkForMistakes(cl) {
 
 		if(currentShip == 0) {
 
-            if (cl == (10 || 11 || 12 || 22 || 23 || 24 || 34 || 35 || 36 || 46 || 47 || 48 ||
-                58 || 59 || 60 || 70 || 71 || 72 || 82 || 83 || 84 || 94 || 95 || 96 ||
-                106 || 107 || 108 || 118 || 119 || 120 || 130 || 131 || 132)) {
-
-
+            if (cl == 10 || cl == 11 || cl == 12 || cl == 22 || cl == 23 ||
+                cl == 24 || cl == 34 || cl == 35 || cl == 36 || cl == 46 ||
+                cl == 47 || cl == 48 || cl == 58 || cl == 59 || cl == 60 ||
+                cl == 70 || cl == 71 || cl == 72 || cl == 82 || cl == 83 ||
+                cl == 84 || cl == 94 || cl == 95 || cl == 96 || cl == 106 ||
+                cl == 107 || cl == 108 || cl == 118 || cl == 119 || cl == 120 ||
+                cl == 130 || cl == 131 || cl == 132 || cl == 141 || cl == 142 || cl == 143) {
+                alert('false');
                 right = false;
-
                 return right;
                 //tuk ne trqbva li prosto da izvikame playerShipOrient(e) i prosto currentShip-=1,
                 // taka da se vyrnem otnovo na postavqneto na syshtiq korab
@@ -52,11 +54,14 @@ function checkForMistakes(cl) {
 
          else if(currentShip == 1 || currentShip == 2) {
 
-             if (cl == (11 || 23 || 35 || 47 || 59 || 71 || 95 || 107 || 119 || 131 || 143 || 10 ||
-             22 || 34 || 46	|| 58 || 70 || 94 || 106 || 118 || 130 || 142)) {
-
-             right = false;
-             return right;
+             if (cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
+                 cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 ||
+                 cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46	||
+                 cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
+                 cl == 130 || cl == 142) {
+                 alert('false');
+                 right = false;
+                 return right;
              }
              else {
              right = true;
@@ -65,23 +70,78 @@ function checkForMistakes(cl) {
          }
          else if(currentShip == 3 || currentShip == 4 || currentShip == 5) {
 
-         if (cl == (11 || 23 || 35 || 47 || 59 || 71 || 95 || 107 || 119 || 131 || 143)) {
+             if (cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
+                 cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 || cl == 143) {
+                 alert('false');
+                 right = false;
+                 return right;
+                 }
+                 else {
+                 right = true;
+                 }
 
-             right = false;
-             return right;
              }
-             else {
-             right = true;
-             }
-
-         }
          else if(currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
             right = true;
          }
 
     }
 	return right;
-}
+
+    if(playerShipOrientation == 1) {
+
+
+        if(currentShip == 0) {
+
+            if (cl == (143 || 142 || 141 || 141 || 140 || 139 || 138 || 137 || 136 || 135 || 134 || 133 ||
+                132 || 131 || 130 || 129 || 128 || 127 || 126 || 125 || 124 || 123 || 122 || 121 ||
+                120 || 119 || 118 || 117 || 116 || 115 || 114 || 113 || 112 || 111 || 110 || 109 || 108)) {
+                alert('false');
+                right = false;
+                return right;
+                //tuk ne trqbva li prosto da izvikame playerShipOrient(e) i prosto currentShip-=1,
+                // taka da se vyrnem otnovo na postavqneto na syshtiq korab
+            }
+
+            else {
+
+                right = true;
+            }
+        }
+
+        else if(currentShip == 1 || currentShip == 2) {
+
+            if (cl == (143 || 142 || 141 || 141 || 140 || 139 || 138 || 137 || 136 || 135 || 134 || 133 ||
+                132 || 131 || 130 || 129 || 128 || 127 || 126 || 125 || 124 || 123 || 122 || 121)) {
+                alert('false');
+                right = false;
+                return right;
+            }
+            else {
+                right = true;
+            }
+
+        }
+        else if(currentShip == 3 || currentShip == 4 || currentShip == 5) {
+
+            if (cl == (11 || 23 || 35 || 47 || 59 || 71 || 95 || 107 || 119 || 131 || 143)) {
+                alert('false');
+                right = false;
+                return right;
+            }
+            else {
+                right = true;
+            }
+
+        }
+        else if(currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
+            right = true;
+        }
+
+    }
+        return right;
+    }
+
 
 function createPlayFields() {
 	//alert('initial');
