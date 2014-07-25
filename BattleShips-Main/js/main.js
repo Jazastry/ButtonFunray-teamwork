@@ -18,6 +18,8 @@ var shipArrayPlayer2 = newFilledArray(144,0);
 //                  2 ship-damaged (red); 3 empty - clicket (transperant); 4 ship-sinket (black)
 
 //tazi funkciq pulni array s daden value
+
+
 function newFilledArray(length, value) {
     var arr = new Array(length);
     while (--length >= 0) {
