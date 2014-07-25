@@ -24,8 +24,6 @@ function newFilledArray(length, value) {
 function myFunction(e) {
 
 	clicktElement = e.target.id;
-    clicketParent = e.target.parentNode.id;
-
     
    if (checkForMistakes(clicktElement)) {
 
