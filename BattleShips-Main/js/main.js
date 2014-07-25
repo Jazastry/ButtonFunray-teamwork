@@ -9,6 +9,18 @@ var currentShip = 0;
 var counter = 0;
 var player1score = 12;
 var player2score = 0;
+var shipArrayPlayer1 = newFilledArray(144,0);
+var shipArrayPlayer2 = newFilledArray(144,0);
+
+//tazi funkciq pulni array s daden value
+function newFilledArray(length, value) {
+    var arr = new Array(length);
+    while (--length >= 0) {
+        arr[length] = value;
+    }
+    return arr;
+}
+
 
 function myFunction(e) {
 
