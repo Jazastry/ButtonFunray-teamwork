@@ -37,10 +37,13 @@ initialCompField();
 function myFunction(e) {
 
     clicktElement = e.target.id;
+
+    clicktParent = e.target.parentNode.id;
     
+
    if (checkForMistakes(clicktElement)) {
 
-        if (counter < 11) {
+        if ((counter < 11) && (clicktParent !== 'field2')) {
 
             shipDisplay(playerShips[currentShip], clicktElement, shipsOrdin[playerShipOrientation]);
 
@@ -49,6 +52,9 @@ function myFunction(e) {
             createPlayFields();
 
             }
+        } else {
+  
+            playerShoot(clicktElement);
         }
     } 
 }
@@ -237,6 +243,7 @@ function checkForMistakes(cl) {
 //                   4 ship-sinket (black)
 
 function gameAction() {
+
     if(playerTurn = 1) {
         computerShoot();
     }
@@ -246,13 +253,19 @@ function gameAction() {
 }
 
 function playerShoot(e) {
-    attackedZone = e.target.id;
+
+    attackedZone = e;
+
     if(computerField[parseInt(attackedZone)] == 1) {
+
         document.getElementById(attackedZone).style.backgroundColor = "red";
         computerField[parseInt(attackedZone)] = 2;
+
     } else if(computerField[parseInt(attackedZone)] == 0) {
+
         document.getElementById(attackedZone).style.backgroundColor = 'transparent';
         computerField[parseInt(attackedZone)] = 3;
+
     } else if(computerField[parseInt(attackedZone)] == 2) {
         alert('already attacked this zone');
     } else if(computerField[parseInt(attackedZone)] == 3) {
