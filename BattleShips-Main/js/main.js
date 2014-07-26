@@ -10,23 +10,10 @@ var counter = 0;
 var playerTurn = 0;
 var player1score = 12;
 var player2score = 0;
-//var shipArrayPlayer1 = newFilledArray(144,0);
-//var shipArrayPlayer2 = newFilledArray(144,0);
-
 
 // computerField -> 0-epmty non-clicket (white-transperant); 1-ship - non-clicket (white-transperant);
 //                  2 ship-damaged (red); 3 empty - clicket (transperant); 4 ship-sinket (black)
 
-//tazi funkciq pulni array s daden value
-
-
-//function newFilledArray(length, value) {
-//    var arr = new Array(length);
-//    while (--length >= 0) {
-//        arr[length] = value;
-//    }
-//    return arr;
-//}
 
 
 //coloring computerField when player shoot
@@ -39,29 +26,29 @@ function myFunction(e) {
     clicktElement = e.target.id;
 
     clicktParent = e.target.parentNode.id;
-    
 
-   if (checkForMistakes(clicktElement)) {
+    if (counter == 10) {
 
-        if (counter == 10) {
+        counter += 2;
 
-            counter += 1;
-        };
-        if ((counter < 11) && (clicktParent !== 'field2')) {
+    };
+    if(counter == 9){
+        alert('Now Choose FIeld to Shoot');
+    }
+    if ((counter < 11) && (clicktParent !== 'field2') && (checkForMistakes(clicktElement))) {
 
-            shipDisplay(playerShips[currentShip], clicktElement, shipsOrdin[playerShipOrientation]);
+        shipDisplay(playerShips[currentShip], clicktElement, shipsOrdin[playerShipOrientation]);
 
-            if (counter < 10) {
+        if (counter < 10) {
 
-            createPlayFields();
+        createPlayFields();
 
-            }
         }
     } 
-    if ( clicktParent == 'field2') {
+    if (counter > 10) {
 
-        playerShoot(clicktElement);
-    }
+        playerShoot(clicktElement, clicktParent);
+    };
 }
 
 function checkForMistakes(cl) {
@@ -120,8 +107,7 @@ function checkForMistakes(cl) {
             if ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
                  cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 || cl == 143) 
                  || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0) ||
-
-                   ( cl == 'wrapper' || cl == 'field1'))) {
+                    cl == 'wrapper' || cl == 'field1')) {
                  
                 alert('Wrong FIeld Try Another One');
 
@@ -143,8 +129,6 @@ function checkForMistakes(cl) {
                 right = false;
 
                 return right;
-
-
             } else {
 
                right = true;
@@ -257,15 +241,18 @@ function gameAction() {
     }
 }
 
-function playerShoot(e) {
-    attackedZone = e;
-    if( attackedZone == 'wrapper' || attackedZone == 'field2') {
+function playerShoot(elem, parent) {
+
+    
+    var attackedZone = elem;
+    var par = parent;
+
+    if( attackedZone == 'wrapper' || par == 'field1') {
         alert('not a valid field');
     }
     else {
 
         if (computerField[parseInt(attackedZone)] == 1) {
-
             document.getElementById(attackedZone).style.backgroundColor = "red";
             computerField[parseInt(attackedZone)] = 2;
             playerTurn = 1;
@@ -284,18 +271,19 @@ function playerShoot(e) {
             alert('already attacked this zone');
         }
     }
-
+    computerShoot();
 }
 
 function computerShoot() {
 
+      
     var curentCompShoot = Math.floor(Math.random() * 144);
 
     if (playerField[curentCompShoot] == 0) {
 
         playerField[curentCompShoot] = 3;
 
-        document.getElementById(curentCompShoot).style.background = '#FFF';
+        document.getElementById(curentCompShoot).style.backgroundImage = "url('images/dot.png')";
 
     }
     if (playerField[curentCompShoot] == 1) {
@@ -303,13 +291,15 @@ function computerShoot() {
         playerField[curentCompShoot] = 2;
         player2score++;
         document.getElementById('player2').value = player2score + " / " + 20;
-        document.getElementById(curentCompShoot).style.background = '#FF0000';
+        document.getElementById(curentCompShoot).style.backgroundColor = '#FF0000';
 
     }
-    if (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4) {
-        computerShoot();
-    }
+    // if (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4) {
+    
+    //     computerShoot();
+    // }
 
+  
     playerTurn = 0;
 }
 
