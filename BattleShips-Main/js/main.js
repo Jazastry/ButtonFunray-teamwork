@@ -374,10 +374,10 @@ function shipDisplay(length, startElement, shipOrdin){
             playerField[parseInt(startElement) + 2] = 1;
             playerField[parseInt(startElement) + 3] = 1;
 
-            document.getElementById(startElement).style.backgroundImage = "url('images/shipBack.png')";
-            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/shipMiddle.png')";
-            document.getElementById(parseInt(startElement)+2).style.backgroundImage = "url('images/shipMiddle.png')";
-            document.getElementById(parseInt(startElement)+3).style.backgroundImage = "url('images/shipFront.png')";
+            document.getElementById(startElement).style.backgroundImage = "url('images/4ship/4ship-nose.png')";
+            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/4ship/4ship-middle-1.png')";
+            document.getElementById(parseInt(startElement)+2).style.backgroundImage = "url('images/4ship/4ship-middle-2.png')";
+            document.getElementById(parseInt(startElement)+3).style.backgroundImage = "url('images/4ship/4ship-tail.png')";
 
         } else if (length == 3) {
 
@@ -385,22 +385,22 @@ function shipDisplay(length, startElement, shipOrdin){
             playerField[parseInt(startElement) + 1] = 1;
             playerField[parseInt(startElement) + 2] = 1;
 
-            document.getElementById(startElement).style.backgroundImage = "url('images/shipBack.png')";
-            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/shipMiddle.png')";           
-            document.getElementById(parseInt(startElement)+2).style.backgroundImage = "url('images/shipFront.png')";
+            document.getElementById(startElement).style.backgroundImage = "url('images/3ship/3ship-1.png')";
+            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/3ship/3ship-2.png')";
+            document.getElementById(parseInt(startElement)+2).style.backgroundImage = "url('images/3ship/3ship-3.png')";
         } else if (length == 2) {
 
             playerField[startElement] = 1;
             playerField[parseInt(startElement) + 1] = 1;
 
-            document.getElementById(startElement).style.backgroundImage = "url('images/shipBack.png')";         
-            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/shipFront.png')";
+            document.getElementById(startElement).style.backgroundImage = "url('images/2ship/2ship-tail.png')";
+            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/2ship/2ship-nose.png')";
 
         } else if (lenght == 1) {
 
             playerField[startElement] = 1;
             
-            document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/shipFront.png')";
+            document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/1ship.png')";
         }
     } else if (shipOrdin === 'vertical') {
 
@@ -411,10 +411,10 @@ function shipDisplay(length, startElement, shipOrdin){
             playerField[parseInt(startElement) + 24] = 1;
             playerField[parseInt(startElement) + 36] = 1;
 
-            document.getElementById(startElement).style.backgroundImage = "url('images/shipBackVert.png')";
-            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/shipMiddleVert.png')";
-            document.getElementById(parseInt(startElement)+24).style.backgroundImage = "url('images/shipMiddleVert.png')";
-            document.getElementById(parseInt(startElement)+36).style.backgroundImage = "url('images/shipFrontVert.png')";
+            document.getElementById(startElement).style.backgroundImage = "url('images/4ship/4ship-nose-vert.png')";
+            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/4ship/4ship-middle-1-vert.png')";
+            document.getElementById(parseInt(startElement)+24).style.backgroundImage = "url('images/4ship/4ship-middle-2-vert.png')";
+            document.getElementById(parseInt(startElement)+36).style.backgroundImage = "url('images/4ship/4ship-tail-vert.png')";
     
         } else if (length == 3) {
 
@@ -422,23 +422,23 @@ function shipDisplay(length, startElement, shipOrdin){
             playerField[parseInt(startElement) + 12] = 1;
             playerField[parseInt(startElement) + 24] = 1;
 
-            document.getElementById(startElement).style.backgroundImage = "url('images/shipBackVert.png')";
-            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/shipMiddleVert.png')";          
-            document.getElementById(parseInt(startElement)+24).style.backgroundImage = "url('images/shipFrontVert.png')";
+            document.getElementById(startElement).style.backgroundImage = "url('images/3ship/3ship-1-vert.png')";
+            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/3ship/3ship-2-vert.png')";
+            document.getElementById(parseInt(startElement)+24).style.backgroundImage = "url('images/3ship/3ship-3-vert.png')";
 
         } else if (length == 2) {
 
             playerField[startElement] = 1;
             playerField[parseInt(startElement) + 12] = 1;
 
-            document.getElementById(startElement).style.backgroundImage = "url('images/shipBackVert.png')";         
-            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/shipFrontVert.png')";
+            document.getElementById(startElement).style.backgroundImage = "url('images/2ship/2ship-nose-vert.png')";
+            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/2ship/2ship-tail-vert.png')";
     
         } else if (length == 1) {
 
              playerField[startElement] = 1;
                         
-            document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/shipFrontVert.png')";
+            document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/1ship.png')";
         }
     }
     counter += 1;
