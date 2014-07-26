@@ -1,3 +1,8 @@
+var boom = new Audio("sounds/boom.wav"); // buffers automatically when created
+var blop = new Audio("sounds/blop.wav");
+
+
+
 var clicktElement;
 var clicketParent;
 var shipsOrdin = ['horizont', 'vertical'];
@@ -262,13 +267,14 @@ function playerShoot(e) {
     else {
 
         if (computerField[parseInt(attackedZone)] == 1) {
-
+            boom.play();
             document.getElementById(attackedZone).style.backgroundColor = "red";
+
             computerField[parseInt(attackedZone)] = 2;
             playerTurn = 1;
 
         } else if (computerField[parseInt(attackedZone)] == 0) {
-
+            blop.play();
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 3;
             playerTurn = 1;
