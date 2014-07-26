@@ -1,11 +1,6 @@
-
-//zvukove za hit & miss
-var boom = new Audio("sounds/boom.wav"); // buffers automatically when created
-var blop = new Audio("sounds/blop.wav");
-
 var clicktElement;
 var clicketParent;
-var shipsOrdin = ['horizontal', 'vertical'];
+var shipsOrdin = ['horizont', 'vertical'];
 var playerField = [];
 var computerField = [];
 var playerShips = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
@@ -13,11 +8,26 @@ var playerShipOrientation = 0;
 var currentShip = 0;
 var counter = 0;
 var playerTurn = 0;
-var player1score = 0;
+var player1score = 12;
 var player2score = 0;
+//var shipArrayPlayer1 = newFilledArray(144,0);
+//var shipArrayPlayer2 = newFilledArray(144,0);
+
 
 // computerField -> 0-epmty non-clicket (white-transperant); 1-ship - non-clicket (white-transperant);
 //                  2 ship-damaged (red); 3 empty - clicket (transperant); 4 ship-sinket (black)
+
+//tazi funkciq pulni array s daden value
+
+
+//function newFilledArray(length, value) {
+//    var arr = new Array(length);
+//    while (--length >= 0) {
+//        arr[length] = value;
+//    }
+//    return arr;
+//}
+
 
 //coloring computerField when player shoot
 initialCompField();
@@ -73,6 +83,7 @@ function checkForMistakes(cl) {
                 cl == 9 || cl == 21 || cl == 33 || cl == 45 || cl == 57 ||
                 cl == 129 || cl == 141 || cl == 'wrapper' || cl == 'field1') {
 
+
                 alert('Wrong FIeld Try Another One');
 
                 right = false;
@@ -91,7 +102,7 @@ function checkForMistakes(cl) {
                  cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46  ||
                  cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
                  cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
-              || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {
+              || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {                 
                  alert('Wrong FIeld Try Another One');
 
                  right = false;
@@ -109,7 +120,8 @@ function checkForMistakes(cl) {
             if ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
                  cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 || cl == 143) 
                  || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0) ||
-                    cl == 'wrapper' || cl == 'field1')) {
+
+                   ( cl == 'wrapper' || cl == 'field1'))) {
                  
                 alert('Wrong FIeld Try Another One');
 
@@ -131,7 +143,8 @@ function checkForMistakes(cl) {
                 right = false;
 
                 return right;
-                
+
+
             } else {
 
                right = true;
@@ -246,20 +259,19 @@ function gameAction() {
 
 function playerShoot(e) {
     attackedZone = e;
-    if( attackedZone == 'wrapper' || attackedZone == 'field1') {
+    if( attackedZone == 'wrapper' || attackedZone == 'field2') {
         alert('not a valid field');
     }
     else {
 
         if (computerField[parseInt(attackedZone)] == 1) {
-            boom.play();
-            document.getElementById(attackedZone).style.backgroundColor = "red";
 
+            document.getElementById(attackedZone).style.backgroundColor = "red";
             computerField[parseInt(attackedZone)] = 2;
             playerTurn = 1;
 
         } else if (computerField[parseInt(attackedZone)] == 0) {
-            blop.play();
+
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 3;
             playerTurn = 1;
@@ -272,7 +284,6 @@ function playerShoot(e) {
             alert('already attacked this zone');
         }
     }
-    gameAction()
 
 }
 
@@ -298,8 +309,8 @@ function computerShoot() {
     if (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4) {
         computerShoot();
     }
+
     playerTurn = 0;
-    gameAction();
 }
 
 
@@ -344,6 +355,7 @@ function showPrompt(length) {
 function playerShipOrient(e) {
 
     var clickElem = e.target.id;
+
     playerShipOrientation = parseInt(clickElem);
 
     document.getElementById('playerFieldPrompt').style.display = 'none'; 
@@ -360,7 +372,7 @@ function playerShipOrient(e) {
 
 function shipDisplay(length, startElement, shipOrdin){
 
-    if(shipOrdin === 'horizontal') {
+    if(shipOrdin === 'horizont') {
 
         if(length == 4) {
 
