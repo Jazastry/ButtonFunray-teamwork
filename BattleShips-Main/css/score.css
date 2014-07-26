@@ -5,33 +5,27 @@
 
 div form {
     position: relative;
-    top: -200px;
-    left: 500px;
-    width: 400px;
-    height: 100px;
+    bottom: -30px;
+    left: 27%;
+    width: 500px;
+    height: 170px;
     text-align: center;
-    margin-bottom: 10px;
-    background: rgba(45,178,215,1);
-    background: -moz-linear-gradient(left, rgba(45,178,215,1) 0%, rgba(41,156,188,0.9) 41%, rgba(21,136,168,0.86) 58%, rgba(37,127,152,0.75) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(45,178,215,1)), color-stop(11%, rgba(41,156,188,0.9)), color-stop(58%, rgba(21,136,168,0.86)), color-stop(100%, rgba(37,127,152,0.75)));
-    background: -webkit-linear-gradient(left, rgba(45,178,215,1) 0%, rgba(41,156,188,0.9) 41%, rgba(21,136,168,0.86) 58%, rgba(37,127,152,0.75) 100%);
-    background: -o-linear-gradient(left, rgba(45,178,215,1) 0%, rgba(41,156,188,0.9) 41%, rgba(21,136,168,0.86) 58%, rgba(37,127,152,0.75) 100%);
-    background: -ms-linear-gradient(left, rgba(45,178,215,1) 0%, rgba(41,156,188,0.9) 41%, rgba(21,136,168,0.86) 58%, rgba(37,127,152,0.75) 100%);
-    background: linear-gradient(to right, rgba(45,178,215,1) 0%, rgba(41,156,188,0.9) 41%, rgba(21,136,168,0.86) 58%, rgba(37,127,152,0.75) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2db2d7', endColorstr='#257f98', GradientType=1 );
+    /*margin-bottom: 10px;*/
+    background-image: url("../images/map.png");
+    background-size: 100% 100%;
     border-radius: 10px;
-    color: white;
+    color: #8C0000;
+
     font-family: military;
 }
 
 div form header {
     padding-bottom: 10px;
-    padding-top: 10px;
-
+    padding-top: 10px;    
 }
 
 div form header span {
-    font-size: 25px;
+    font-size: 60px;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -41,7 +35,9 @@ input[type="text"] {
     margin-right: 10px;
     text-align: center;
     width: 60px;
-    border-radius: 10px;
-    background-color: rgba(45,178,215,1);
-    color: white;
+    border: none;
+    background-color: transparent;
+    color: #8C0000;
+    font-size: 30px;
 }
+

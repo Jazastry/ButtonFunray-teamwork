@@ -1,5 +1,6 @@
 var clicktElement;
 var clicketParent;
+var clicktPlace;
 var shipsOrdin = ['horizont', 'vertical'];
 var playerField = [];
 var computerField = [];
@@ -26,6 +27,7 @@ function myFunction(e) {
     clicktElement = e.target.id;
 
     clicktParent = e.target.parentNode.id;
+
 
     if (counter == 10) {
 
@@ -294,7 +296,7 @@ function computerShoot() {
         playerField[curentCompShoot] = 2;
         player2score++;
         document.getElementById('player2').value = player2score + " / " + 20;
-        document.getElementById(curentCompShoot).style.backgroundColor = '#FF0000';
+        document.getElementById(curentCompShoot).style.backgroundImage = "url('images/sign.jpg')";
 
     }
     // if (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4) {
