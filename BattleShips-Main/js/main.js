@@ -25,7 +25,6 @@ initialCompField();
 function myFunction(e) {
 
     clicktElement = e.target.id;
-
     clicktParent = e.target.parentNode.id;
 
 
@@ -35,7 +34,14 @@ function myFunction(e) {
 
     };
     if(counter == 9){
-        alert('Now Choose FIeld to Shoot');
+        document.getElementById('playerFieldPrompt').style.display = 'block';
+        document.getElementById('playerFieldPrompt').style.backgroundColor = '#C70000';
+        document.getElementById('playerFieldPrompt').style.height = '120px';
+        document.getElementById('0c').style.display = 'none';
+        document.getElementById('shipType').style.display = 'none';
+        document.getElementById('directionP').innerHTML = 'Now The Real Game Begin !\nShoot Them All';
+        document.getElementById('directionP').style.fontSize = "3rem";
+        document.getElementById('1c').innerHTML = 'OK';
     }
     if ((counter < 11) && (clicktParent !== 'field2') && (checkForMistakes(clicktElement))) {
 
