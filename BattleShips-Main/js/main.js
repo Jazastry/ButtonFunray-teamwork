@@ -1,11 +1,11 @@
+
+//zvukove za hit & miss
 var boom = new Audio("sounds/boom.wav"); // buffers automatically when created
 var blop = new Audio("sounds/blop.wav");
 
-
-
 var clicktElement;
 var clicketParent;
-var shipsOrdin = ['horizont', 'vertical'];
+var shipsOrdin = ['horizontal', 'vertical'];
 var playerField = [];
 var computerField = [];
 var playerShips = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
@@ -13,26 +13,11 @@ var playerShipOrientation = 0;
 var currentShip = 0;
 var counter = 0;
 var playerTurn = 0;
-var player1score = 12;
+var player1score = 0;
 var player2score = 0;
-//var shipArrayPlayer1 = newFilledArray(144,0);
-//var shipArrayPlayer2 = newFilledArray(144,0);
-
 
 // computerField -> 0-epmty non-clicket (white-transperant); 1-ship - non-clicket (white-transperant);
 //                  2 ship-damaged (red); 3 empty - clicket (transperant); 4 ship-sinket (black)
-
-//tazi funkciq pulni array s daden value
-
-
-//function newFilledArray(length, value) {
-//    var arr = new Array(length);
-//    while (--length >= 0) {
-//        arr[length] = value;
-//    }
-//    return arr;
-//}
-
 
 //coloring computerField when player shoot
 initialCompField();
@@ -87,7 +72,6 @@ function checkForMistakes(cl) {
                 cl == 69 || cl == 81 || cl == 93 || cl == 105 || cl == 117 ||
                 cl == 9 || cl == 21 || cl == 33 || cl == 45 || cl == 57 ||
                 cl == 129 || cl == 141 || cl == 'wrapper' || cl == 'field1') {
-
 
                 alert('Wrong FIeld Try Another One');
 
@@ -261,7 +245,7 @@ function gameAction() {
 
 function playerShoot(e) {
     attackedZone = e;
-    if( attackedZone == 'wrapper' || attackedZone == 'field2') {
+    if( attackedZone == 'wrapper' || attackedZone == 'field1') {
         alert('not a valid field');
     }
     else {
@@ -287,6 +271,7 @@ function playerShoot(e) {
             alert('already attacked this zone');
         }
     }
+    gameAction()
 
 }
 
@@ -312,8 +297,8 @@ function computerShoot() {
     if (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4) {
         computerShoot();
     }
-
     playerTurn = 0;
+    gameAction();
 }
 
 
@@ -358,7 +343,6 @@ function showPrompt(length) {
 function playerShipOrient(e) {
 
     var clickElem = e.target.id;
-
     playerShipOrientation = parseInt(clickElem);
 
     document.getElementById('playerFieldPrompt').style.display = 'none'; 
@@ -375,7 +359,7 @@ function playerShipOrient(e) {
 
 function shipDisplay(length, startElement, shipOrdin){
 
-    if(shipOrdin === 'horizont') {
+    if(shipOrdin === 'horizontal') {
 
         if(length == 4) {
 

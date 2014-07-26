@@ -61,6 +61,11 @@ html {
       padding: 1rem;
       display: none;
       z-index: 50; }
+
+    html body #playerFieldPrompt #pirate {
+
+    }
+
       html body #playerFieldPrompt ul {
         list-style: none; }
         html body #playerFieldPrompt ul li {
