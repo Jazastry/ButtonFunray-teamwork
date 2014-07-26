@@ -8,7 +8,7 @@ var playerShipOrientation = 0;
 var currentShip = 0;
 var counter = 0;
 var playerTurn = 0;
-var player1score = 12;
+var player1score = 0;
 var player2score = 0;
 
 // computerField -> 0-epmty non-clicket (white-transperant); 1-ship - non-clicket (white-transperant);
@@ -253,9 +253,11 @@ function playerShoot(elem, parent) {
     else {
 
         if (computerField[parseInt(attackedZone)] == 1) {
-            document.getElementById(attackedZone).style.backgroundColor = "red";
+            document.getElementById(attackedZone).style.backgroundColor = '#00ffff';
             computerField[parseInt(attackedZone)] = 2;
             playerTurn = 1;
+            player1score++;
+            ocument.getElementById('player1').value = player1score + " / " + 20;
 
         } else if (computerField[parseInt(attackedZone)] == 0) {
 
@@ -264,11 +266,12 @@ function playerShoot(elem, parent) {
             playerTurn = 1;
 
         } else if (computerField[parseInt(attackedZone)] == 2) {
-            alert('already attacked this zone');
+            alert('already attacked this zone ' );
+
         } else if (computerField[parseInt(attackedZone)] == 3) {
-            alert('already attacked this zone');
+            alert('already attacked this zone ' );
         } else if (computerField[parseInt(attackedZone)] == 4) {
-            alert('already attacked this zone');
+            alert('already attacked this zone ' );
         }
     }
     computerShoot();
@@ -492,6 +495,3 @@ function initialCompField() {
 
     };
 }
-//scoreboard  func
-// document.getElementById('player1').value = player1score + " / " + 20;
-// document.getElementById('player2').value = player2score + " / " + 20;
