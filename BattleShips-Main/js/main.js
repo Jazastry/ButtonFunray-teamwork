@@ -255,10 +255,10 @@ function playerShoot(elem, parent) {
         if (computerField[parseInt(attackedZone)] == 1) {
             document.getElementById(attackedZone).style.backgroundColor = '#00ffff';
             computerField[parseInt(attackedZone)] = 2;
-            playerTurn = 1;
             player1score++;
             ocument.getElementById('player1').value = player1score + " / " + 20;
-
+            playerTurn = 1;
+            
         } else if (computerField[parseInt(attackedZone)] == 0) {
 
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
