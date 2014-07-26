@@ -1,4 +1,4 @@
-html, body, div {
+html, body, div, li, ul, p {
   margin: 0px;
   padding: 0px;
 }
@@ -11,7 +11,6 @@ html {
     width: 100%;
     height: 100%;
     background-image: url("../images/bgImage.jpg");
-//    background-color: #d7f1d7;
     background-size: 100% 100%;
     position: relative;
     #wrapper{
@@ -39,13 +38,12 @@ html {
         }
       }
       #field2{
-
         width: 480px;
         height: 467px;
         margin-top: 20px;
-        margin-left: 87px;
+        margin-left: 20px;
         display: inline-block;
-        background-image: url("../images/opacity-ocean.png");
+        background-image: url("../images/ocean.jpg");
         div{
           width: 38px;
           height: 37px;
@@ -54,31 +52,31 @@ html {
           margin-right: -1px;
           cursor: pointer;
           background: rgba(255,255,255,0.6);
-
         }
         div:active {
           background: rgba(255,255,255,0.3);
         }
-
       }
     }
     #playerFieldPrompt {
 			position: absolute;
 			top: 200px;
-			left: 150px;
+			left: 200px;
       width: 300px;
-      height: 150px;
+      height: 100px;
       font-size: 2rem;
       background: rgba(255,255,255,0.9);
       border-radius: 5px;
-      padding: 1rem;
+      padding: 1.5rem;
       display: none;
-      z-index: 50;
+      z-index: 10;
         ul {
           list-style: none;
+          text-align: center;
+        
             li {
               display: inline-block;
-              width: 100px;
+              width: 90px;
               height: 30px;
               border: 1px solid #000;
               background: #C3C3C3;
@@ -87,6 +85,7 @@ html {
               line-height: 30px;
               cursor: pointer;
               transition: 0.5s;
+              margin-left: 17px;
             }
             li:hover{
               background: #E1E1E1; 
@@ -94,15 +93,31 @@ html {
             li:active {
               background: rgba(255,255,255,0.9); 
             }
+            img {
+              margin-left: 17px;
+            }
         }
     }
 
-    #bomber{
-      width: 1050px;
-      height: 256px;
-      background: url("../images/rightGun.png"), url("../images/leftGun.png"), no-repeat;
+    #bomberLeft{
+      width: 80px; 
+      height: 110px;
+      background: url("../images/leftGun.png");
       background-repeat: no-repeat;
-      background-position: 00, 794px 0;
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+    }
+    #bomberRight{   
+      width: 80px; 
+      height: 110px;
+      background: url("../images/rightGun.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
     }
 
     #cover {
@@ -113,8 +128,5 @@ html {
       display: none;
       z-index: 1;
     }
-    // #div1 {width:150px;height:30px;padding:10px;border:1px solid #aaaaaa;}
-    // #1a{background: url('../images/shipFront.png');z-index: 50;}
   }
-
 }

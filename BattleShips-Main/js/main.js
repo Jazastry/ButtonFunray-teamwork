@@ -253,18 +253,18 @@ function playerShoot(elem, parent) {
     else {
 
         if (computerField[parseInt(attackedZone)] == 1) {
-            document.getElementById(attackedZone).style.backgroundColor = '#00ffff';
+            document.getElementById(attackedZone).style.backgroundImage = "url('images/sign.jpg')";
             computerField[parseInt(attackedZone)] = 2;
-            player1score++;
-            ocument.getElementById('player1').value = player1score + " / " + 20;
             playerTurn = 1;
-            
+           // player1score++;
+           // ocument.getElementById('player1').value = player1score + " / " + 20;
+            // computerShoot();
         } else if (computerField[parseInt(attackedZone)] == 0) {
 
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 3;
             playerTurn = 1;
-
+            // computerShoot();
         } else if (computerField[parseInt(attackedZone)] == 2) {
             alert('already attacked this zone ' );
 
