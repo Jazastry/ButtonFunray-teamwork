@@ -14,6 +14,7 @@ var player2score = 0;
 var isShootedComputer = 0;
 
 
+
 // computerField -> 0-epmty non-clicket (white-transperant); 1-ship - non-clicket (white-transperant);
 //                  2 ship-damaged (red); 3 empty - clicket (transperant); 4 ship-sinket (black)
 
@@ -261,6 +262,8 @@ function playerShoot(elem, parent) {
     else {
 
         if (computerField[parseInt(attackedZone)] == 1) {
+            var blop = new Audio("sounds/scream.mp3");
+            blop.play();
             document.getElementById(attackedZone).style.backgroundImage = "url('images/sign1.png')";
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 2;
@@ -273,7 +276,8 @@ function playerShoot(elem, parent) {
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 3;
             playerTurn = 1;
-
+            var blop = new Audio("sounds/blop.wav");
+            blop.play();
         } else if (computerField[parseInt(attackedZone)] == 2) {
             alert('already attacked this zone ' );
 
@@ -306,7 +310,8 @@ function computerShoot() {
         isShootedComputer += 1;
     }
     if ((isShootedComputer == 0) && (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4)) {
-    
+        var blop = new Audio("sounds/blop.wav");
+        blop.play();
         computerShoot();
     }
 
