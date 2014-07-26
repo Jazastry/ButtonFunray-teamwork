@@ -11,6 +11,8 @@ var counter = 0;
 var playerTurn = 0;
 var player1score = 0;
 var player2score = 0;
+var isShootedComputer = 0;
+
 
 // computerField -> 0-epmty non-clicket (white-transperant); 1-ship - non-clicket (white-transperant);
 //                  2 ship-damaged (red); 3 empty - clicket (transperant); 4 ship-sinket (black)
@@ -20,13 +22,10 @@ var player2score = 0;
 //coloring computerField when player shoot
 initialCompField();
 
-
-
 function myFunction(e) {
 
     clicktElement = e.target.id;
     clicktParent = e.target.parentNode.id;
-
 
     if (counter == 10) {
 
@@ -34,14 +33,8 @@ function myFunction(e) {
 
     };
     if(counter == 9){
-        document.getElementById('playerFieldPrompt').style.display = 'block';
-        document.getElementById('playerFieldPrompt').style.backgroundColor = '#C70000';
-        document.getElementById('playerFieldPrompt').style.height = '120px';
-        document.getElementById('0c').style.display = 'none';
-        document.getElementById('shipType').style.display = 'none';
-        document.getElementById('directionP').innerHTML = 'Now The Real Game Begin !\nShoot Them All';
-        document.getElementById('directionP').style.fontSize = "3rem";
-        document.getElementById('1c').innerHTML = 'OK';
+
+        startShootingPrompt();
     }
     if ((counter < 11) && (clicktParent !== 'field2') && (checkForMistakes(clicktElement))) {
 
@@ -56,7 +49,14 @@ function myFunction(e) {
     if (counter > 10) {
 
         playerShoot(clicktElement, clicktParent);
-    };
+    }
+    if (player1score == 20) {
+
+        playerWinPrompt();
+    } else if (player2score == 20) {
+
+        computerWinPrompt();
+    }
 }
 
 function checkForMistakes(cl) {
@@ -261,18 +261,19 @@ function playerShoot(elem, parent) {
     else {
 
         if (computerField[parseInt(attackedZone)] == 1) {
-            document.getElementById(attackedZone).style.backgroundImage = "url('images/sign.jpg')";
+            document.getElementById(attackedZone).style.backgroundImage = "url('images/sign1.png')";
+            document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 2;
             playerTurn = 1;
-           // player1score++;
-           // ocument.getElementById('player1').value = player1score + " / " + 20;
-            // computerShoot();
+            player1score++;
+            document.getElementById('player1').value = player1score + " / " + 20;
+
         } else if (computerField[parseInt(attackedZone)] == 0) {
 
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 3;
             playerTurn = 1;
-            // computerShoot();
+
         } else if (computerField[parseInt(attackedZone)] == 2) {
             alert('already attacked this zone ' );
 
@@ -287,30 +288,29 @@ function playerShoot(elem, parent) {
 
 function computerShoot() {
 
-      
+ 
     var curentCompShoot = Math.floor(Math.random() * 144);
 
     if (playerField[curentCompShoot] == 0) {
 
         playerField[curentCompShoot] = 3;
-
         document.getElementById(curentCompShoot).style.backgroundImage = "url('images/dot.png')";
-
+        isShootedComputer += 1;
     }
     if (playerField[curentCompShoot] == 1) {
 
         playerField[curentCompShoot] = 2;
         player2score++;
         document.getElementById('player2').value = player2score + " / " + 20;
-        document.getElementById(curentCompShoot).style.backgroundImage = "url('images/sign.jpg')";
-
+        document.getElementById(curentCompShoot).style.backgroundImage = "url('images/sign1.png')";
+        isShootedComputer += 1;
     }
-    // if (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4) {
+    if ((isShootedComputer == 0) && (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4)) {
     
-    //     computerShoot();
-    // }
+        computerShoot();
+    }
 
-  
+    isShootedComputer = 0;
     playerTurn = 0;
 }
 
@@ -484,8 +484,8 @@ function initialCompField() {
     computerField[125] = 1;
     computerField[126] = 1;
     //treta 2ka
-    computerField[77] = 1;
-    computerField[89] = 1;
+    computerField[80] = 1;
+    computerField[81] = 1;
     //purva 1ca
     computerField[110] = 1;
     //vtora 1ca
@@ -496,10 +496,52 @@ function initialCompField() {
     computerField[12] = 1;
 
 
-    var initialCompShipsDirection = Math.floor(((Math.random() * 10) +1) % 2);
+    // var initialCompShipsDirection = Math.floor(((Math.random() * 10) +1) % 2);
     
-    for (var i = 0; i < playerShips.length ; i++) {
+    // for (var i = 0; i < playerShips.length ; i++) {
         
 
-    };
+    // };
+}
+
+function startShootingPrompt() {
+
+    document.getElementById('playerFieldPrompt').style.display = 'block';
+    document.getElementById('playerFieldPrompt').style.backgroundColor = '#C70000';
+    document.getElementById('playerFieldPrompt').style.height = '120px';
+    document.getElementById('playerFieldPrompt').style.left = '450px';
+    document.getElementById('0c').style.display = 'none';
+    document.getElementById('shipType').style.display = 'none';
+    document.getElementById('directionP').innerHTML = 'Now The Real Game Begin !\n Destroy Them All!';
+    document.getElementById('directionP').style.fontSize = "3rem";
+    document.getElementById('1c').innerHTML = 'OK';
+    document.getElementById('1c').style.backgroundColor = "#900000";
+}
+
+function playerWinPrompt() {
+
+    document.getElementById('playerFieldPrompt').style.display = 'block';
+    document.getElementById('playerFieldPrompt').style.backgroundColor = '#C70000';
+    document.getElementById('playerFieldPrompt').style.width = '350px';
+    document.getElementById('playerFieldPrompt').style.left = '450px';
+    document.getElementById('0c').style.display = 'none';
+    document.getElementById('shipType').style.display = 'none';
+    document.getElementById('directionP').innerHTML = 'You Win! You Distroed Those Fuckn Pirates!';
+    document.getElementById('directionP').style.fontSize = "3rem";
+    document.getElementById('1c').innerHTML = 'OK';
+    document.getElementById('1c').style.backgroundColor = "#900000";
+}
+
+function computerWinPrompt() {
+
+    document.getElementById('playerFieldPrompt').style.display = 'block';
+    document.getElementById('playerFieldPrompt').style.backgroundColor = '#C70000';
+    document.getElementById('playerFieldPrompt').style.height = '120px';
+    document.getElementById('playerFieldPrompt').style.left = '450px';
+    document.getElementById('0c').style.display = 'none';
+    document.getElementById('shipType').style.display = 'none';
+    document.getElementById('directionP').innerHTML = 'You Lose! Go Home To Leek Your Woonds!';
+    document.getElementById('directionP').style.fontSize = "3rem";
+    document.getElementById('1c').innerHTML = 'OK';
+    document.getElementById('1c').style.backgroundColor = "#900000";
 }
