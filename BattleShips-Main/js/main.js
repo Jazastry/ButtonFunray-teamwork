@@ -131,6 +131,7 @@ function checkForMistakes(cl) {
                 right = false;
 
                 return right;
+                
             } else {
 
                right = true;
