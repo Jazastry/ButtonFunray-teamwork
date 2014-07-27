@@ -55,7 +55,6 @@ function myFunction(e) {
 
         computerWinPrompt();
     }
-    document.getElementById('player1').value = playerShips[currentShip];
 }
 
 function checkForMistakes(cl, fieldName) {
@@ -711,7 +710,7 @@ function startShootingPrompt() {
     document.getElementById('playerFieldPrompt').style.left = '450px';
     document.getElementById('0c').style.display = 'none';
     document.getElementById('shipType').style.display = 'none';
-    document.getElementById('directionP').innerHTML = 'Now The Real Game Begin !\n Kill Them All!';
+    document.getElementById('directionP').innerHTML = 'Now The Real Game Begins ! Kill Them All!';
     document.getElementById('directionP').style.fontSize = "3rem";
     document.getElementById('1c').innerHTML = 'OK';
     document.getElementById('1c').style.backgroundColor = "#900000";
@@ -726,7 +725,7 @@ function playerWinPrompt() {
     document.getElementById('playerFieldPrompt').style.left = '450px';
     document.getElementById('0c').style.display = 'none';
     document.getElementById('shipType').style.display = 'none';
-    document.getElementById('directionP').innerHTML = 'You Win! You Distroed Those Fuckn Pirates!';
+    document.getElementById('directionP').innerHTML = 'You Win! You Destroyed Those Fucking Pirates!';
     document.getElementById('directionP').style.fontSize = "3rem";
     document.getElementById('1c').innerHTML = 'OK';
     document.getElementById('1c').href = '';
@@ -742,7 +741,7 @@ function computerWinPrompt() {
     document.getElementById('playerFieldPrompt').style.left = '450px';
     document.getElementById('0c').style.display = 'none';
     document.getElementById('shipType').style.display = 'none';
-    document.getElementById('directionP').innerHTML = 'You Lose! Go Home To Leek Your Woonds!';
+    document.getElementById('directionP').innerHTML = 'You Lose! Go Home To Lick Your Wounds!';
     document.getElementById('directionP').style.fontSize = "3rem";
     document.getElementById('1c').innerHTML = 'OK';
     document.getElementById('1c').style.backgroundColor = "#900000";
