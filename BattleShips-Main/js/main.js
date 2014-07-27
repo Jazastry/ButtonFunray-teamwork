@@ -13,13 +13,12 @@ var player1score = 0;
 var player2score = 0;
 var isShootedComputer = 0;
 var explosionStop = 0;
-
-
+var compFIeldMap = 0;
+var currentField = 'computerField';
+var isGameStarted = false;
 
 // computerField -> 0-epmty non-clicket (white-transperant); 1-ship - non-clicket (white-transperant);
 //                  2 ship-damaged (red); 3 empty - clicket (transperant); 4 ship-sinket (black)
-
-
 
 //coloring computerField when player shoot
 initialCompField();
@@ -29,18 +28,11 @@ function myFunction(e) {
     clicktElement = e.target.id;
     clicktParent = e.target.parentNode.id;
 
-    if (counter == 10) {
 
-        counter += 2;
 
-    };
-    if(counter == 9){
+    if ((counter < 11) && (clicktParent !== 'field2') && (checkForMistakes(clicktElement, clicktParent))) {
 
-        startShootingPrompt();
-    }
-    if ((counter < 11) && (clicktParent !== 'field2') && (checkForMistakes(clicktElement))) {
-
-        shipDisplay(playerShips[currentShip], clicktElement, shipsOrdin[playerShipOrientation]);
+        shipDisplay(playerShips[currentShip], clicktElement, shipsOrdin[playerShipOrientation], clicktParent);
 
         if (counter < 10) {
 
@@ -48,6 +40,10 @@ function myFunction(e) {
 
         }
     } 
+    if(counter == 10){
+
+        startShootingPrompt();
+    }
     if (counter > 10) {
 
         playerShoot(clicktElement, clicktParent);
@@ -59,175 +55,326 @@ function myFunction(e) {
 
         computerWinPrompt();
     }
+    document.getElementById('player1').value = playerShips[currentShip];
 }
 
-function checkForMistakes(cl) {
+function checkForMistakes(cl, fieldName) {
 
     var right;
 
-    if(playerShipOrientation == 0) {
+// :::::::::::::::::::::::::::::::::::: PLAYER FIELD CHECK ::::::::::::::::::::::::::::::::::::::::::::::::
+ 
+    if (fieldName == 'field1') {
 
-        if(currentShip == 0) {
+        if(playerShipOrientation == 0) {
 
-            if  (cl == 10 || cl == 11 || cl == 12 || cl == 22 || cl == 23 ||
-                cl == 24 || cl == 34 || cl == 35 || cl == 36 || cl == 46 ||
-                cl == 47 || cl == 48 || cl == 58 || cl == 59 || cl == 60 ||
-                cl == 70 || cl == 71 || cl == 72 || cl == 82 || cl == 83 ||
-                cl == 84 || cl == 94 || cl == 95 || cl == 96 || cl == 106 ||
-                cl == 107 || cl == 108 || cl == 118 || cl == 119 || cl == 120 ||
-                cl == 130 || cl == 131 || cl == 132 || cl == 141 || cl == 142 || cl == 143 ||                 
-                cl == 69 || cl == 81 || cl == 93 || cl == 105 || cl == 117 ||
-                cl == 9 || cl == 21 || cl == 33 || cl == 45 || cl == 57 ||
-                cl == 129 || cl == 141 || cl == 'wrapper' || cl == 'field1') {
+            if(currentShip == 0) {
+
+                if  (cl == 10 || cl == 11 || cl == 12 || cl == 22 || cl == 23 ||
+                    cl == 24 || cl == 34 || cl == 35 || cl == 36 || cl == 46 ||
+                    cl == 47 || cl == 48 || cl == 58 || cl == 59 || cl == 60 ||
+                    cl == 70 || cl == 71 || cl == 72 || cl == 82 || cl == 83 ||
+                    cl == 84 || cl == 94 || cl == 95 || cl == 96 || cl == 106 ||
+                    cl == 107 || cl == 108 || cl == 118 || cl == 119 || cl == 120 ||
+                    cl == 130 || cl == 131 || cl == 132 || cl == 141 || cl == 142 || cl == 143 ||                 
+                    cl == 69 || cl == 81 || cl == 93 || cl == 105 || cl == 117 ||
+                    cl == 9 || cl == 21 || cl == 33 || cl == 45 || cl == 57 ||
+                    cl == 129 || cl == 141 || cl == 'wrapper' || cl == 'field1') {
 
 
-                alert('Wrong FIeld Try Another One');
+                    alert('Wrong FIeld Try Another One');
 
-                right = false;
+                    right = false;
 
-                return right;
+                    return right;
 
-            }  else {
+                }  else {
 
-                right = true;
-            }
+                    right = true;
+                }
 
-        } else if (currentShip == 1 || currentShip == 2) {
+            } else if (currentShip == 1 || currentShip == 2) {
 
-             if  ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
-                 cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 ||
-                 cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46  ||
-                 cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
-                 cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
-              || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {                 
-                 alert('Wrong FIeld Try Another One');
+                 if  ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
+                     cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 ||
+                     cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46  ||
+                     cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
+                     cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
+                  || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {                 
+                     alert('Wrong FIeld Try Another One');
 
-                 right = false;
+                     right = false;
 
-                 return right;
+                     return right;
 
-             } else {
+                 } else {
 
-             right = true;
+                 right = true;
+                 }
              }
-         }
 
-         else if(currentShip == 3 || currentShip == 4 || currentShip == 5) {
+             else if(currentShip == 3 || currentShip == 4 || currentShip == 5) {
 
-            if ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
-                 cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 || cl == 143) 
-                 || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0) ||
+                if ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
+                     cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 || cl == 143) 
+                     || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0) ||
+                        cl == 'wrapper' || cl == 'field1')) {
+                     
+                    alert('Wrong FIeld Try Another One');
+
+                    right = false;
+
+                    return right;
+                } else {
+
+                   right = true;
+                }
+            }
+
+            else if (currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
+
+                 if (playerField[parseInt(cl)] !== 0) {
+                     
+                    alert('Wrong FIeld Try Another One');
+
+                    right = false;
+
+                    return right;
+                } else {
+
+                   right = true;
+                }
+
+            }
+        }
+
+        if(playerShipOrientation == 1) {
+
+            if(currentShip == 0) {
+
+                if  (cl == 143 || cl == 142 || cl == 141 || cl == 140 ||
+                    cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
+                    cl == 134 || cl == 133 || cl == 132 || cl == 131 || cl == 130 ||
+                    cl == 129 || cl == 128 || cl == 127 || cl == 126 || cl == 125 ||
+                    cl == 124 || cl == 123 || cl == 122 || cl == 121 || cl == 120 ||
+                    cl == 119 || cl == 118 || cl == 117 || cl == 116 || cl == 115 ||
+                    cl == 114 || cl == 113 || cl == 112 || cl == 111 || cl == 110 ||
+                    cl == 109 || cl == 108 || cl == 'wrapper' || cl == 'field1') {
+
+                    alert('Wrong FIeld Try Another One');
+
+                    right = false;
+
+                    return right;
+
+                } else {
+
+                    right = true;
+                }
+
+            } else if (currentShip == 1 || currentShip == 2) {
+
+                if  ((cl == 143 || cl == 142 || cl == 141 || cl == 141 || cl == 140 ||
+                    cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
+                    cl == 134 || cl == 133 || cl == 132 || cl == 131 || cl == 130 ||
+                    cl == 129 || cl == 128 || cl == 127 || cl == 126 || cl == 125 ||
+                    cl == 124 || cl == 123 || cl == 122 || cl == 121) || ((playerField[parseInt(cl)] !== 0) || 
+                    (playerField[parseInt(cl) + 12] !== 0) || (playerField[parseInt(cl) + 24] !== 0) ||
                     cl == 'wrapper' || cl == 'field1')) {
-                 
-                alert('Wrong FIeld Try Another One');
 
-                right = false;
+                    alert('Wrong FIeld Try Another One');
 
-                return right;
-            } else {
+                    right = false;
 
-               right = true;
+                    return right;
+
+                } else {
+
+                    right = true;
+                }
+
+            } else if (currentShip == 3 || currentShip == 4 || currentShip == 5) {
+
+                if  ((cl == 143 || cl == 142 || cl == 141 || cl == 141 || cl == 140 ||
+                    cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
+                    cl == 134 || cl == 133) || ((playerField[parseInt(cl)] !== 0) || 
+                    (playerField[parseInt(cl) + 12] !== 0) || cl == 'wrapper' || cl == 'field1')) {
+
+                    alert('Wrong FIeld Try Another One');
+
+                    right = false;
+
+                    return right;
+
+                } else {
+
+                    right = true;
+                }
+
+            } else if (currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
+
+                if  (playerField[parseInt(cl)] !== 0 || cl == 'wrapper' || cl == 'field1') {
+
+                    alert('Wrong FIeld Try Another One');
+
+                    right = false;
+                    return right;
+                } else {
+
+                    right = true;
+                }
             }
         }
 
-        else if (currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
+// :::::::::::::::::::::::::::::: COMPYTER FIELD CHECK :::::::::::::::::::::::::::::::::::::::::
 
-             if (playerField[parseInt(cl)] !== 0) {
-                 
-                alert('Wrong FIeld Try Another One');
+    } else {
 
-                right = false;
+        if(playerShipOrientation == 0) {
 
-                return right;
-            } else {
+            if(currentShip == 0) {
 
-               right = true;
+                if  (cl == 10 || cl == 11 || cl == 12 || cl == 22 || cl == 23 ||
+                    cl == 24 || cl == 34 || cl == 35 || cl == 36 || cl == 46 ||
+                    cl == 47 || cl == 48 || cl == 58 || cl == 59 || cl == 60 ||
+                    cl == 70 || cl == 71 || cl == 72 || cl == 82 || cl == 83 ||
+                    cl == 84 || cl == 94 || cl == 95 || cl == 96 || cl == 106 ||
+                    cl == 107 || cl == 108 || cl == 118 || cl == 119 || cl == 120 ||
+                    cl == 130 || cl == 131 || cl == 132 || cl == 141 || cl == 142 || cl == 143 ||                 
+                    cl == 69 || cl == 81 || cl == 93 || cl == 105 || cl == 117 ||
+                    cl == 9 || cl == 21 || cl == 33 || cl == 45 || cl == 57 ||
+                    cl == 129 || cl == 141) {
+
+                    right = false;
+
+                    return right;
+
+                }  else {
+
+                    right = true;
+                }
+
+            } else if (currentShip == 1 || currentShip == 2) {
+
+                 if  ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
+                     cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 ||
+                     cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46  ||
+                     cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
+                     cl == 130 || cl == 142) || ((computerField[parseInt(cl)] !== 0) || (computerField[parseInt(cl) + 1] !== 0)
+                  || (computerField[parseInt(cl) + 2] !== 0))) {                 
+
+                     right = false;
+
+                     return right;
+
+                 } else {
+
+                 right = true;
+                 }
+             }
+
+             else if(currentShip == 3 || currentShip == 4 || currentShip == 5) {
+
+                if ((cl == 11 || cl == 23 || cl == 35 || cl == 47 || cl == 59 ||
+                     cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 || cl == 143) 
+                     || ((computerField[parseInt(cl)] !== 0) || (computerField[parseInt(cl) + 1] !== 0))) {
+
+                    right = false;
+
+                    return right;
+                } else {
+
+                   right = true;
+                }
             }
 
+            else if (currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
+
+                 if (computerField[parseInt(cl)] !== 0) {
+
+                    right = false;
+
+                    return right;
+                } else {
+
+                   right = true;
+                }
+
+            }
+        }
+
+        if(playerShipOrientation == 1) {
+
+            if(currentShip == 0) {
+
+                if  (cl == 143 || cl == 142 || cl == 141 || cl == 140 ||
+                    cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
+                    cl == 134 || cl == 133 || cl == 132 || cl == 131 || cl == 130 ||
+                    cl == 129 || cl == 128 || cl == 127 || cl == 126 || cl == 125 ||
+                    cl == 124 || cl == 123 || cl == 122 || cl == 121 || cl == 120 ||
+                    cl == 119 || cl == 118 || cl == 117 || cl == 116 || cl == 115 ||
+                    cl == 114 || cl == 113 || cl == 112 || cl == 111 || cl == 110 ||
+                    cl == 109 || cl == 108) {
+
+                    right = false;
+
+                    return right;
+
+                } else {
+
+                    right = true;
+                }
+
+            } else if (currentShip == 1 || currentShip == 2) {
+
+                if  ((cl == 143 || cl == 142 || cl == 141 || cl == 141 || cl == 140 ||
+                    cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
+                    cl == 134 || cl == 133 || cl == 132 || cl == 131 || cl == 130 ||
+                    cl == 129 || cl == 128 || cl == 127 || cl == 126 || cl == 125 ||
+                    cl == 124 || cl == 123 || cl == 122 || cl == 121) || ((computerField[parseInt(cl)] !== 0) || 
+                    (computerField[parseInt(cl) + 12] !== 0) || (computerField[parseInt(cl) + 24] !== 0))) {
+
+                    right = false;
+
+                    return right;
+
+                } else {
+
+                    right = true;
+                }
+
+            } else if (currentShip == 3 || currentShip == 4 || currentShip == 5) {
+
+                if  ((cl == 143 || cl == 142 || cl == 141 || cl == 141 || cl == 140 ||
+                    cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
+                    cl == 134 || cl == 133) || ((computerField[parseInt(cl)] !== 0) || 
+                    (computerField[parseInt(cl) + 12] !== 0))) {
+
+
+                    right = false;
+
+                    return right;
+
+                } else {
+
+                    right = true;
+                }
+
+            } else if (currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
+
+                if  (computerField[parseInt(cl)] !== 0) {
+
+                    right = false;
+                    return right;
+                } else {
+
+                    right = true;
+                }
+            }
         }
     }
 
-    if(playerShipOrientation == 1) {
-
-        if(currentShip == 0) {
-
-            if  (cl == 143 || cl == 142 || cl == 141 || cl == 140 ||
-                cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
-                cl == 134 || cl == 133 || cl == 132 || cl == 131 || cl == 130 ||
-                cl == 129 || cl == 128 || cl == 127 || cl == 126 || cl == 125 ||
-                cl == 124 || cl == 123 || cl == 122 || cl == 121 || cl == 120 ||
-                cl == 119 || cl == 118 || cl == 117 || cl == 116 || cl == 115 ||
-                cl == 114 || cl == 113 || cl == 112 || cl == 111 || cl == 110 ||
-                cl == 109 || cl == 108 || cl == 'wrapper' || cl == 'field1') {
-
-                alert('Wrong FIeld Try Another One');
-
-                right = false;
-
-                return right;
-
-            } else {
-
-                right = true;
-            }
-
-        } else if (currentShip == 1 || currentShip == 2) {
-
-            if  ((cl == 143 || cl == 142 || cl == 141 || cl == 141 || cl == 140 ||
-                cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
-                cl == 134 || cl == 133 || cl == 132 || cl == 131 || cl == 130 ||
-                cl == 129 || cl == 128 || cl == 127 || cl == 126 || cl == 125 ||
-                cl == 124 || cl == 123 || cl == 122 || cl == 121) || ((playerField[parseInt(cl)] !== 0) || 
-                (playerField[parseInt(cl) + 12] !== 0) || (playerField[parseInt(cl) + 24] !== 0) ||
-                cl == 'wrapper' || cl == 'field1')) {
-
-                alert('Wrong FIeld Try Another One');
-
-                right = false;
-
-                return right;
-
-            } else {
-
-                right = true;
-            }
-
-        } else if (currentShip == 3 || currentShip == 4 || currentShip == 5) {
-
-            if  ((cl == 143 || cl == 142 || cl == 141 || cl == 141 || cl == 140 ||
-                cl == 139 || cl == 138 || cl == 137 || cl == 136 || cl == 135 ||
-                cl == 134 || cl == 133) || ((playerField[parseInt(cl)] !== 0) || 
-                (playerField[parseInt(cl) + 12] !== 0) || cl == 'wrapper' || cl == 'field1')) {
-
-                alert('Wrong FIeld Try Another One');
-
-                right = false;
-
-                return right;
-
-            } else {
-
-                right = true;
-            }
-
-        } else if (currentShip == 6 || currentShip == 7 || currentShip == 8 || currentShip == 9) {
-
-            if  (playerField[parseInt(cl)] !== 0 || cl == 'wrapper' || cl == 'field1') {
-
-                alert('Wrong FIeld Try Another One');
-
-                right = false;
-
-                return right;
-
-            } else {
-
-                right = true;
-            }
-        }
-
-    }
-        return right;
+    return right;
 }
 
 
@@ -281,9 +428,10 @@ function playerShoot(elem, parent) {
             computerField[parseInt(attackedZone)] = 2;
 
             playerTurn = 1;
-            player1score++;
-            var div = document.getElementById(attackedZone);
-            var rect = div.getBoundingClientRect();
+            player1score += 1;
+
+            var divr = document.getElementById(attackedZone);
+            var rect = divr.getBoundingClientRect();
             document.getElementById('player1').value = player1score + " / " + 20;
             document.getElementById('boom').style.left = rect.left + 'px';
             document.getElementById('boom').style.top = rect.top + 'px';
@@ -297,6 +445,7 @@ function playerShoot(elem, parent) {
             playerTurn = 1;
             var blop = new Audio("sounds/blop.wav");
             blop.play();
+
         } else if (computerField[parseInt(attackedZone)] == 2) {
             alert('already attacked this zone ' );
 
@@ -321,15 +470,17 @@ function computerShoot() {
         isShootedComputer += 1;
     }
     if (playerField[curentCompShoot] == 1) {
+
         playerField[curentCompShoot] = 2;
-        player2score++;
+        player2score += 1;
+        isShootedComputer += 1;
         document.getElementById('player2').value = player2score + " / " + 20;
         document.getElementById(curentCompShoot).style.backgroundImage = "url('images/sign1.png')";
-        isShootedComputer += 1;
     }
     if ((isShootedComputer == 0) && (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4)) {
-        var blop = new Audio("sounds/blop.wav");
-        blop.play();
+ 
+       var blop = new Audio("sounds/blop.wav");
+       blop.play();
         computerShoot();
     }
 
@@ -342,6 +493,7 @@ function computerShoot() {
 
 
 function createPlayFields() {
+
 
     initialPLayerField();
 }
@@ -393,141 +545,161 @@ function playerShipOrient(e) {
            currentShip += 1;    
         }
 
+        counter += 1;
+
         return;
     }
 }
 
-function shipDisplay(length, startElement, shipOrdin){
+function shipDisplay(length, startElement, shipOrdin, currentField){
 
     if(shipOrdin === 'horizont') {
 
         if(length == 4) {
+            if (currentField == 'field1') {
+                playerField[startElement] = 1;
+                playerField[parseInt(startElement) + 1] = 1;
+                playerField[parseInt(startElement) + 2] = 1;
+                playerField[parseInt(startElement) + 3] = 1;
 
-            playerField[startElement] = 1;
-            playerField[parseInt(startElement) + 1] = 1;
-            playerField[parseInt(startElement) + 2] = 1;
-            playerField[parseInt(startElement) + 3] = 1;
-
-            document.getElementById(startElement).style.backgroundImage = "url('images/4ship/4ship-nose.png')";
-            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/4ship/4ship-middle-1.png')";
-            document.getElementById(parseInt(startElement)+2).style.backgroundImage = "url('images/4ship/4ship-middle-2.png')";
-            document.getElementById(parseInt(startElement)+3).style.backgroundImage = "url('images/4ship/4ship-tail.png')";
-
+                document.getElementById(startElement).style.backgroundImage = "url('images/4ship/4ship-nose.png')";
+                document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/4ship/4ship-middle-1.png')";
+                document.getElementById(parseInt(startElement)+2).style.backgroundImage = "url('images/4ship/4ship-middle-2.png')";
+                document.getElementById(parseInt(startElement)+3).style.backgroundImage = "url('images/4ship/4ship-tail.png')";
+            } else {
+                computerField[startElement] = 1;
+                computerField[parseInt(startElement) + 1] = 1;
+                computerField[parseInt(startElement) + 2] = 1;
+                computerField[parseInt(startElement) + 3] = 1;
+            }
         } else if (length == 3) {
+            if (currentField == 'field1') {
+                playerField[startElement] = 1;
+                playerField[parseInt(startElement) + 1] = 1;
+                playerField[parseInt(startElement) + 2] = 1;
 
-            playerField[startElement] = 1;
-            playerField[parseInt(startElement) + 1] = 1;
-            playerField[parseInt(startElement) + 2] = 1;
-
-            document.getElementById(startElement).style.backgroundImage = "url('images/3ship/3ship-1.png')";
-            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/3ship/3ship-2.png')";
-            document.getElementById(parseInt(startElement)+2).style.backgroundImage = "url('images/3ship/3ship-3.png')";
+                document.getElementById(startElement).style.backgroundImage = "url('images/3ship/3ship-1.png')";
+                document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/3ship/3ship-2.png')";
+                document.getElementById(parseInt(startElement)+2).style.backgroundImage = "url('images/3ship/3ship-3.png')";
+            } else {
+                computerField[startElement] = 1;
+                computerField[parseInt(startElement) + 1] = 1;
+                computerField[parseInt(startElement) + 2] = 1;
+            }
         } else if (length == 2) {
+            if (currentField == 'field1') {
+                playerField[parseInt(startElement)] = 1;
+                playerField[parseInt(startElement) + 1] = 1;
 
-            playerField[startElement] = 1;
-            playerField[parseInt(startElement) + 1] = 1;
+                document.getElementById(startElement).style.backgroundImage = "url('images/2ship/2ship-tail.png')";
+                document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/2ship/2ship-nose.png')";
+            } else {
+                computerField[startElement] = 1;
+                computerField[parseInt(startElement) + 1] = 1;
+            }
+        } else if (length = 1) {
 
-            document.getElementById(startElement).style.backgroundImage = "url('images/2ship/2ship-tail.png')";
-            document.getElementById(parseInt(startElement)+1).style.backgroundImage = "url('images/2ship/2ship-nose.png')";
-
-        } else if (lenght == 1) {
-
-            playerField[startElement] = 1;
+            if (currentField == 'field1') {
+                playerField[parseInt(startElement)] = 1;
             
-            document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/1ship.png')";
+                document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/1ship.png')";
+            } else {
+                computerField[startElement] = 1;
+            }    
         }
-    } else if (shipOrdin === 'vertical') {
+    } else if (shipOrdin = 'vertical') {
 
         if(length == 4) {
+            if (currentField == 'field1') {
+                playerField[startElement] = 1;
+                playerField[parseInt(startElement) + 12] = 1;
+                playerField[parseInt(startElement) + 24] = 1;
+                playerField[parseInt(startElement) + 36] = 1;
 
-            playerField[startElement] = 1;
-            playerField[parseInt(startElement) + 12] = 1;
-            playerField[parseInt(startElement) + 24] = 1;
-            playerField[parseInt(startElement) + 36] = 1;
-
-            document.getElementById(startElement).style.backgroundImage = "url('images/4ship/4ship-nose-vert.png')";
-            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/4ship/4ship-middle-1-vert.png')";
-            document.getElementById(parseInt(startElement)+24).style.backgroundImage = "url('images/4ship/4ship-middle-2-vert.png')";
-            document.getElementById(parseInt(startElement)+36).style.backgroundImage = "url('images/4ship/4ship-tail-vert.png')";
-    
+                document.getElementById(startElement).style.backgroundImage = "url('images/4ship/4ship-nose-vert.png')";
+                document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/4ship/4ship-middle-1-vert.png')";
+                document.getElementById(parseInt(startElement)+24).style.backgroundImage = "url('images/4ship/4ship-middle-2-vert.png')";
+                document.getElementById(parseInt(startElement)+36).style.backgroundImage = "url('images/4ship/4ship-tail-vert.png')";
+            } else {
+                computerField[startElement] = 1;
+                computerField[parseInt(startElement) + 12] = 1;
+                computerField[parseInt(startElement) + 24] = 1;
+                computerField[parseInt(startElement) + 36] = 1;
+            }
         } else if (length == 3) {
+            if (currentField == 'field1') {
+                playerField[startElement] = 1;
+                playerField[parseInt(startElement) + 12] = 1;
+                playerField[parseInt(startElement) + 24] = 1;
 
-            playerField[startElement] = 1;
-            playerField[parseInt(startElement) + 12] = 1;
-            playerField[parseInt(startElement) + 24] = 1;
-
-            document.getElementById(startElement).style.backgroundImage = "url('images/3ship/3ship-1-vert.png')";
-            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/3ship/3ship-2-vert.png')";
-            document.getElementById(parseInt(startElement)+24).style.backgroundImage = "url('images/3ship/3ship-3-vert.png')";
-
+                document.getElementById(startElement).style.backgroundImage = "url('images/3ship/3ship-1-vert.png')";
+                document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/3ship/3ship-2-vert.png')";
+                document.getElementById(parseInt(startElement)+24).style.backgroundImage = "url('images/3ship/3ship-3-vert.png')";
+            } else {
+                computerField[startElement] = 1;
+                computerField[parseInt(startElement) + 12] = 1;
+                computerField[parseInt(startElement) + 24] = 1;
+            }
         } else if (length == 2) {
+            if (currentField == 'field1') {
+                playerField[startElement] = 1;
+                playerField[parseInt(startElement) + 12] = 1;
 
-            playerField[startElement] = 1;
-            playerField[parseInt(startElement) + 12] = 1;
-
-            document.getElementById(startElement).style.backgroundImage = "url('images/2ship/2ship-nose-vert.png')";
-            document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/2ship/2ship-tail-vert.png')";
-    
+                document.getElementById(startElement).style.backgroundImage = "url('images/2ship/2ship-nose-vert.png')";
+                document.getElementById(parseInt(startElement)+12).style.backgroundImage = "url('images/2ship/2ship-tail-vert.png')";
+            } else {
+                computerField[startElement] = 1;
+                computerField[parseInt(startElement) + 12] = 1;
+            }
         } else if (length == 1) {
-
-             playerField[startElement] = 1;
-                        
-            document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/1ship.png')";
+            if (currentField == 'field1') {
+                 playerField[startElement] = 1;
+                          
+                 document.getElementById(parseInt(startElement)).style.backgroundImage = "url('images/1ship.png')";
+            } else {
+                computerField[startElement] = 1;
+            }
         }
     }
-    counter += 1;
-
 }
 
 function computerFieldCreation() {
+
+    var randCell = Math.floor((Math.random() * 144));
+    var randShipOrient = Math.floor((Math.random() * 2));;
+
+    if (checkForMistakes(randCell, currentField)) {
+           
+        shipDisplay(playerShips[currentShip], randCell, shipsOrdin[randShipOrient], currentField);
+    } 
+    else {
+
+        computerFieldCreation();
+    } 
 
 
 }
 
 function initialCompField() {
 
+
     for (var i = 0; i < 144; i++) {
         
         computerField[i] = 0;
     };
-    //chetvorka
-    computerField[1] = 1;
-    computerField[2] = 1;
-    computerField[3] = 1;
-    computerField[4] = 1;
-    //purva 3ka
-    computerField[18] = 1;
-    computerField[30] = 1;
-    computerField[42] = 1;
-    //vtora 3ka
-    computerField[49] = 1;
-    computerField[50] = 1;
-    computerField[51] = 1;
-    //purva 2ka
-    computerField[77] = 1;
-    computerField[89] = 1;
-    //vtora 2ka
-    computerField[125] = 1;
-    computerField[126] = 1;
-    //treta 2ka
-    computerField[80] = 1;
-    computerField[81] = 1;
-    //purva 1ca
-    computerField[110] = 1;
-    //vtora 1ca
-    computerField[58] = 1;
-    //treta 1ca
-    computerField[143] = 1;
-    //chetvurta 1ca
-    computerField[12] = 1;
+    for (var i = 0; i < playerShips.length; i += 1) {
 
+        currentShip = i;
+        computerFieldCreation();
+    };
 
-    // var initialCompShipsDirection = Math.floor(((Math.random() * 10) +1) % 2);
-    
-    // for (var i = 0; i < playerShips.length ; i++) {
-        
+    currentField = 'playerField';
 
-    // };
+    currentShip = 0;
+
+    counter = 0;
+
+    createPlayFields();
 }
 
 function startShootingPrompt() {
