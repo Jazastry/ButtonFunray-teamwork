@@ -69,7 +69,7 @@ html {
       border-radius: 5px;
       padding: 1.5rem;
       display: none;
-      z-index: 10;
+      z-index: 20;
         ul {
           list-style: none;
           text-align: center;
@@ -123,7 +123,7 @@ html {
       -webkit-animation: gran 2s; /* Chrome, Safari, Opera */
       animation: gran 2s;
       animation-iteration-count: 1;
-      z-index: 50;
+      z-index: 10;
     }
     @keyframes gran {
       10% {
@@ -165,7 +165,9 @@ html {
       background: transparent;
       position: absolute;
       display: none;
-      z-index: 1;
+      top: 0px;
+      left: 0px;
+      z-index: 15;
     }
   }
 }

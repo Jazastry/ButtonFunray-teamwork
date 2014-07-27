@@ -368,10 +368,11 @@ function showPrompt(length) {
         document.getElementById('shipType').style.display = 'none';
         document.getElementById('directionP').innerHTML = 'next ship is ' + length + 'cell';
         document.getElementById('1c').innerHTML = 'OK';
+        document.getElementById('cover').style.display = 'block';
     } else {
 
     document.getElementById('playerFieldPrompt').style.display = 'block';
-    //document.getElementById('cover').style.display = 'block';
+    document.getElementById('cover').style.display = 'block';
     document.getElementById('shipType').innerHTML = 'ship length : ' + length + ' cells';
     }
 }   
@@ -380,18 +381,20 @@ function playerShipOrient(e) {
 
     var clickElem = e.target.id;
 
-    playerShipOrientation = parseInt(clickElem);
+    if ((clickElem == '0c') || (clickElem == '1c')) {
 
-    document.getElementById('playerFieldPrompt').style.display = 'none'; 
+        playerShipOrientation = parseInt(clickElem);
 
+        document.getElementById('playerFieldPrompt').style.display = 'none';
+        document.getElementById('cover').style.display = 'none'; 
 
+        if( counter != 0) {
 
-    if( counter != 0) {
+           currentShip += 1;    
+        }
 
-       currentShip += 1;    
+        return;
     }
-
-    return;
 }
 
 function shipDisplay(length, startElement, shipOrdin){
@@ -540,6 +543,7 @@ function startShootingPrompt() {
     document.getElementById('directionP').style.fontSize = "3rem";
     document.getElementById('1c').innerHTML = 'OK';
     document.getElementById('1c').style.backgroundColor = "#900000";
+    document.getElementById('cover').style.display = 'block';
 }
 
 function playerWinPrompt() {
@@ -553,7 +557,9 @@ function playerWinPrompt() {
     document.getElementById('directionP').innerHTML = 'You Win! You Distroed Those Fuckn Pirates!';
     document.getElementById('directionP').style.fontSize = "3rem";
     document.getElementById('1c').innerHTML = 'OK';
+    document.getElementById('1c').href = '';
     document.getElementById('1c').style.backgroundColor = "#900000";
+    document.getElementById('cover').style.display = 'block';
 }
 
 function computerWinPrompt() {
@@ -568,4 +574,5 @@ function computerWinPrompt() {
     document.getElementById('directionP').style.fontSize = "3rem";
     document.getElementById('1c').innerHTML = 'OK';
     document.getElementById('1c').style.backgroundColor = "#900000";
+    document.getElementById('cover').style.display = 'block';
 }
