@@ -90,7 +90,33 @@ html {
       background-size: 100% 100%;
       position: absolute;
       bottom: 10px;
+      right: 20px;
+      bottom: 20px;
       right: 20px; }
+    html body #granateLeft {
+      width: 30px;
+      height: 30px;
+      background: url("../images/bomb1.png");
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 75px;
+      right: 75px; }
+    html body #granateLeft:hover {
+      -webkit-animation: gran 2s;
+      /* Chrome, Safari, Opera */
+      animation: gran 2s;
+      animation-iteration-count: 1;
+      z-index: 50; }
+@keyframes gran {
+  html body 10%  {
+    -webkit-transform: translate(20px, 20px);
+    transform: translate(20px, 20px); }
+  html body 50%  {
+    -webkit-transform: translate(20px, 20px);
+    transform: translate(300px, 300px); }
+  html body 100%  {
+    -webkit-transform: translate(20px, 20px);
+    transform: translate(1000px, 100px); } }
     html body #bomberRight {
       width: 80px;
       height: 110px;
@@ -100,6 +126,14 @@ html {
       position: absolute;
       bottom: 10px;
       left: 20px; }
+    html body #granateRight {
+      width: 30px;
+      height: 30px;
+      background: url("../images/bomb1.png");
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 68px;
+      left: 75px; }
     html body #cover {
       width: 100%;
       height: 100%;

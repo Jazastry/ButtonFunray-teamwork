@@ -532,10 +532,11 @@ function startShootingPrompt() {
     document.getElementById('playerFieldPrompt').style.display = 'block';
     document.getElementById('playerFieldPrompt').style.backgroundColor = '#C70000';
     document.getElementById('playerFieldPrompt').style.height = '120px';
+    document.getElementById('playerFieldPrompt').style.width = '350px';
     document.getElementById('playerFieldPrompt').style.left = '450px';
     document.getElementById('0c').style.display = 'none';
     document.getElementById('shipType').style.display = 'none';
-    document.getElementById('directionP').innerHTML = 'Now The Real Game Begin !\n Destroy Them All!';
+    document.getElementById('directionP').innerHTML = 'Now The Real Game Begin !\n Kill Them All!';
     document.getElementById('directionP').style.fontSize = "3rem";
     document.getElementById('1c').innerHTML = 'OK';
     document.getElementById('1c').style.backgroundColor = "#900000";
