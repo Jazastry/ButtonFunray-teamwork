@@ -12,6 +12,7 @@ var playerTurn = 0;
 var player1score = 0;
 var player2score = 0;
 var isShootedComputer = 0;
+var explosionStop = 0;
 
 
 
@@ -262,14 +263,32 @@ function playerShoot(elem, parent) {
     else {
 
         if (computerField[parseInt(attackedZone)] == 1) {
-            var blop = new Audio("sounds/scream.mp3");
-            blop.play();
+            var boomWav = new Audio("sounds/boom.wav");
+            setInterval(boomWav.play(),2000);
+            var scream = new Audio("sounds/scream.mp3");
+            scream.play();
+            function elementX(element) {
+                    var parentPos = findPos(element.offsetParent);
+                    return parentPos.X + element.offsetLeft;
+            }
+            function elementY(element) {
+                    var parentPos = findPos(element.offsetParent);
+                    return parentPos.Y + element.offsetTop;
+            }
+
             document.getElementById(attackedZone).style.backgroundImage = "url('images/sign1.png')";
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 2;
+
             playerTurn = 1;
             player1score++;
+            var div = document.getElementById(attackedZone);
+            var rect = div.getBoundingClientRect();
             document.getElementById('player1').value = player1score + " / " + 20;
+            document.getElementById('boom').style.left = rect.left + 'px';
+            document.getElementById('boom').style.top = rect.top + 'px';
+            document.getElementById('boom').style.visibility = 'visible';
+
 
         } else if (computerField[parseInt(attackedZone)] == 0) {
 
@@ -302,7 +321,6 @@ function computerShoot() {
         isShootedComputer += 1;
     }
     if (playerField[curentCompShoot] == 1) {
-
         playerField[curentCompShoot] = 2;
         player2score++;
         document.getElementById('player2').value = player2score + " / " + 20;

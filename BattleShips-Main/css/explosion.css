@@ -1,0 +1,79 @@
+/*in keyframes for some reason background-position must be -935px 
+if the animation is executed at any div in field1 or field2*/
+.bye {
+    position:absolute;
+    visibility: hidden;
+    width: 37px;
+    height: 37px;
+    background-image: url("../images/fire.png");
+    
+    -webkit-animation: fire 1.6s steps(25) infinite;
+       -moz-animation: fire 1.6s steps(25) infinite;
+        -ms-animation: fire 1.6s steps(25) infinite;
+         -o-animation: fire 1.6s steps(25) infinite;
+            animation: fire 1.6s steps(25) infinite;
+
+}
+
+/*.water {*/
+    /*width: 37px;*/
+    /*height: 37px;*/
+    /*background-image: url("waterOne.png");*/
+    /**/
+    /*-webkit-animation: fire 5s steps(14) infinite;*/
+       /*-moz-animation: fire 5s steps(14) infinite;*/
+        /*-ms-animation: fire 5s steps(14) infinite;*/
+         /*-o-animation: fire 5s steps(14) infinite;*/
+            /*animation: fire 5s steps(14) infinite;*/
+/*}*/
+
+@-webkit-keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; }
+}
+
+@-moz-keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; }
+}
+
+@-ms-keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; }
+}
+
+@-o-keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; }
+}
+
+@keyframes fire {
+   from { background-position:    0px; }
+     to { background-position: -925px; } 
+}
+
+
+/*@-webkit-keyframes water {*/
+   /*from { background-position:    0px; }*/
+     /*to { background-position: -256px; }*/
+/*}*/
+
+/*@-moz-keyframes water {*/
+   /*from { background-position:    0px; }*/
+     /*to { background-position: -256px; }*/
+/*}*/
+
+/*@-ms-keyframes water {*/
+   /*from { background-position:    0px; }*/
+     /*to { background-position: -256px; }*/
+/*}*/
+
+/*@-o-keyframes water {*/
+   /*from { background-position:    0px; }*/
+     /*to { background-position: -256px; }*/
+/*}*/
+
+/*@keyframes water {*/
+   /*from { background-position:    0px; }*/
+     /*to { background-position: -256px; } */
+/*}*/
