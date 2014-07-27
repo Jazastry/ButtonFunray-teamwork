@@ -265,8 +265,8 @@ function playerShoot(elem, parent) {
         if (computerField[parseInt(attackedZone)] == 1) {
             var boomWav = new Audio("sounds/boom.wav");
             setInterval(boomWav.play(),2000);
-            var scream = new Audio("sounds/scream.mp3");
-            scream.play();
+            var scream = [new Audio("sounds/scream.mp3"), new Audio("sounds/scream2.mp3"), new Audio("sounds/scream3.mp3")];
+            scream[ Math.floor(Math.random() * 3)].play();
             function elementX(element) {
                     var parentPos = findPos(element.offsetParent);
                     return parentPos.X + element.offsetLeft;
