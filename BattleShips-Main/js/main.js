@@ -29,7 +29,6 @@ function myFunction(e) {
     clicktParent = e.target.parentNode.id;
 
 
-
     if ((counter < 11) && (clicktParent !== 'field2') && (checkForMistakes(clicktElement, clicktParent))) {
 
         shipDisplay(playerShips[currentShip], clicktElement, shipsOrdin[playerShipOrientation], clicktParent);
@@ -42,9 +41,10 @@ function myFunction(e) {
     } 
     if(counter == 10){
 
+        isGameStarted = true;
         startShootingPrompt();
     }
-    if (counter > 10) {
+    if ((counter > 10) && isGameStarted) {
 
         playerShoot(clicktElement, clicktParent);
     }
@@ -387,15 +387,15 @@ function checkForMistakes(cl, fieldName) {
 //                  3 empty - clicket (transperant);
 //                   4 ship-sinket (black)
 
-function gameAction() {
+// function gameAction() {
 
-    if(playerTurn = 1) {
-        computerShoot();
-    }
-    else if(playerTurn == 0){
-        playerShoot();
-    }
-}
+//     if(playerTurn = 1) {
+//         computerShoot();
+//     }
+//     else if(playerTurn == 0){
+//         playerShoot();
+//     }
+// }
 
 function playerShoot(elem, parent) {
 
@@ -445,7 +445,12 @@ function playerShoot(elem, parent) {
             alert('already attacked this zone ' );
         }
     }
-    computerShoot();
+    if(isGameStarted){
+         document.getElementById('cover').style.display = 'block';
+        setTimeout(computerShoot, 1000);
+    }
+    
+    //computerShoot();
 }
 
 function computerShoot() {
@@ -453,7 +458,7 @@ function computerShoot() {
  
     var curentCompShoot = Math.floor(Math.random() * 144);
 
-    if (playerField[curentCompShoot] == 0) {
+    if ((playerField[curentCompShoot] == 0) && isGameStarted) {
 
         playerField[curentCompShoot] = 3;
         document.getElementById(curentCompShoot).style.backgroundImage = "url('images/dot.png')";
@@ -474,6 +479,7 @@ function computerShoot() {
         computerShoot();
     }
 
+     document.getElementById('cover').style.display = 'none';
     isShootedComputer = 0;
     playerTurn = 0;
 }
@@ -729,7 +735,7 @@ function playerWinPrompt() {
     document.getElementById('1c').style.backgroundColor = "#900000";
     document.getElementById('cover').style.display = 'block';
     var yes = new Audio("sounds/blah1.wav");
-    setTimeout(yes.play(), 3000);
+   // setTimeout(yes.play(), 3000);
 }
 
 function computerWinPrompt() {
@@ -746,5 +752,5 @@ function computerWinPrompt() {
     document.getElementById('1c').style.backgroundColor = "#900000";
     document.getElementById('cover').style.display = 'block';
     var no = new Audio("sounds/what_the_hell2.wav");
-    setTimeout(no.play(), 1000);
+    //setTimeout(no.play(), 1000);
 }
