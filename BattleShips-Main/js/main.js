@@ -413,15 +413,6 @@ function playerShoot(elem, parent) {
             setInterval(boomWav.play(),2000);
             var scream = [new Audio("sounds/scream.mp3"), new Audio("sounds/scream2.mp3"), new Audio("sounds/scream3.mp3")];
             scream[ Math.floor(Math.random() * 3)].play();
-            function elementX(element) {
-                    var parentPos = findPos(element.offsetParent);
-                    return parentPos.X + element.offsetLeft;
-            }
-            function elementY(element) {
-                    var parentPos = findPos(element.offsetParent);
-                    return parentPos.Y + element.offsetTop;
-            }
-
             document.getElementById(attackedZone).style.backgroundImage = "url('images/sign1.png')";
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 2;
@@ -442,7 +433,7 @@ function playerShoot(elem, parent) {
             document.getElementById(attackedZone).style.backgroundColor = 'transparent';
             computerField[parseInt(attackedZone)] = 3;
             playerTurn = 1;
-            var blop = new Audio("sounds/blop.wav");
+            var blop = new Audio("sounds/splash.mp3");
             blop.play();
 
         } else if (computerField[parseInt(attackedZone)] == 2) {
@@ -511,6 +502,10 @@ function initialPLayerField(){
 }
 
 function showPrompt(length) {
+    var voice = [new Audio("sounds/gimme2.wav"), new Audio("sounds/trying.wav"),
+        new Audio("sounds/sweet_merciful_crap.wav"),new Audio("sounds/man_v_machine.wav"),
+        new Audio("sounds/what_the_hell2.wav"), new Audio("sounds/run_for_your_lives_x.wav"), new Audio("sounds/stop_the_presses.wav")];
+    voice[ Math.floor(Math.random() * 5)].play();
 
     if(length == 1){
 
@@ -715,6 +710,8 @@ function startShootingPrompt() {
     document.getElementById('1c').innerHTML = 'OK';
     document.getElementById('1c').style.backgroundColor = "#900000";
     document.getElementById('cover').style.display = 'block';
+    var mad = new Audio("sounds/mad.wav");
+    mad.play();
 }
 
 function playerWinPrompt() {
@@ -731,6 +728,8 @@ function playerWinPrompt() {
     document.getElementById('1c').href = '';
     document.getElementById('1c').style.backgroundColor = "#900000";
     document.getElementById('cover').style.display = 'block';
+    var yes = new Audio("sounds/blah1.wav");
+    setTimeout(yes.play(), 3000);
 }
 
 function computerWinPrompt() {
@@ -746,4 +745,6 @@ function computerWinPrompt() {
     document.getElementById('1c').innerHTML = 'OK';
     document.getElementById('1c').style.backgroundColor = "#900000";
     document.getElementById('cover').style.display = 'block';
+    var no = new Audio("sounds/what_the_hell2.wav");
+    setTimeout(no.play(), 1000);
 }
