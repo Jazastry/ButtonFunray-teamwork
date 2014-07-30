@@ -21,6 +21,7 @@ html {
         margin-top: 20px;
         margin-left: 0px;
         display: inline-block;
+		box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 1);
         background-image: url("../images/ocean.jpg"); }
         html body #wrapper #field1 div {
           width: 38px;
@@ -33,11 +34,13 @@ html {
         html body #wrapper #field1 div:active {
           background: rgba(255, 255, 255, 0.3); }
       html body #wrapper #field2 {
+		float: right;
         width: 480px;
         height: 467px;
         margin-top: 20px;
         margin-left: 20px;
         display: inline-block;
+		box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 1);
         background-image: url("../images/ocean.jpg"); }
         html body #wrapper #field2 div {
           width: 38px;
