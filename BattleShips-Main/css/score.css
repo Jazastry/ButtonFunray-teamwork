@@ -2,11 +2,16 @@
     font-family: military;
     src: url(../fonts/militaryFont.ttf);
 }
-
+#scoreBoard{
+	
+	display: inline;
+	margin: 10px auto;
+}
 div form {
     position: relative;
-    bottom: -30px;
-    left: 28%;
+    /*bottom: -30px;
+    left: 28%;*/
+	margin: 10px auto;
     width: 500px;
     height: 170px;
     text-align: center;
