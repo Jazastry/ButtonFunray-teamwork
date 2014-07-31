@@ -22,8 +22,10 @@ html {
         margin-left: 0px;
         display: inline-block;
 		box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 1);
+		-moz-background-image: url(../images/mozocean.jpg);
         background-image: url("../images/ocean.jpg"); }
         html body #wrapper #field1 div {
+			font-size: 0;
           width: 38px;
           height: 37px;
           display: inline-block;
@@ -88,7 +90,8 @@ html {
     html body #bomberLeft {
       width: 80px;
       height: 110px;
-      background: url("../images/leftGun.png");
+      
+	  background: url("../images/leftGun.png");
       background-repeat: no-repeat;
       background-size: 100% 100%;
       position: absolute;

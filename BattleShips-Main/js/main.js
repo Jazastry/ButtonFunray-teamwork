@@ -474,8 +474,6 @@ function computerShoot() {
     }
     if ((isShootedComputer == 0) && (playerField[curentCompShoot] == 2 || playerField[curentCompShoot] == 3 || playerField[curentCompShoot] == 4)) {
  
-       var blop = new Audio("sounds/blop.wav");
-       blop.play();
         computerShoot();
     }
 
