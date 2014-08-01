@@ -447,7 +447,7 @@ function playerShoot(elem, parent) {
     }
     if(isGameStarted){
          document.getElementById('cover').style.display = 'block';
-        setTimeout(computerShoot, 1000);
+        setTimeout(computerShoot, 500);
     }
     
     //computerShoot();
