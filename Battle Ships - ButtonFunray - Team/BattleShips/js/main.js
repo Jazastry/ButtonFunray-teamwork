@@ -1,6 +1,5 @@
 var clicktElement;
-var clicketParent;
-var clicktPlace;
+var clicktParent;
 var shipsOrdin = ['horizont', 'vertical'];
 var playerField = [];
 var computerField = [];
@@ -12,8 +11,6 @@ var playerTurn = 0;
 var player1score = 0;
 var player2score = 0;
 var isShootedComputer = 0;
-var explosionStop = 0;
-var compFIeldMap = 0;
 var currentField = 'computerField';
 var isGameStarted = false;
 
@@ -58,7 +55,6 @@ function myFunction(e) {
 }
 
 function checkForMistakes(cl, fieldName) {
-
     var right;
 
 // :::::::::::::::::::::::::::::::::::: PLAYER FIELD CHECK ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -143,7 +139,6 @@ function checkForMistakes(cl, fieldName) {
 
                    right = true;
                 }
-
             }
         }
 
@@ -376,26 +371,13 @@ function checkForMistakes(cl, fieldName) {
     return right;
 }
 
-
-
-
-//LOGIKATA na IGRATA SLED START-a
+//LOGIC OF TGE GAME AFTER THE START
 
 // computerField -> 0-epmty non-clicket (white-transperant);
 //                 1-ship - non-clicket (white-transperant);
 //                  2 ship-damaged (red);
 //                  3 empty - clicket (transperant);
 //                   4 ship-sinket (black)
-
-// function gameAction() {
-
-//     if(playerTurn = 1) {
-//         computerShoot();
-//     }
-//     else if(playerTurn == 0){
-//         playerShoot();
-//     }
-// }
 
 function playerShoot(elem, parent) {
 
@@ -448,13 +430,11 @@ function playerShoot(elem, parent) {
     if(isGameStarted){
          document.getElementById('cover').style.display = 'block';
         setTimeout(computerShoot, 500);
-    }
-    
+    }    
     //computerShoot();
 }
 
 function computerShoot() {
-
  
     var curentCompShoot = Math.floor(Math.random() * 144);
 
@@ -476,22 +456,14 @@ function computerShoot() {
  
         computerShoot();
     }
-
      document.getElementById('cover').style.display = 'none';
     isShootedComputer = 0;
     playerTurn = 0;
 }
 
-
-
-
-
 function createPlayFields() {
-
-
     initialPLayerField();
 }
-
 function initialPLayerField(){      
 
     if (counter == 0) { 
@@ -499,9 +471,8 @@ function initialPLayerField(){
         for (var i = 0; i < 144; i++) {
     
             playerField[i] = 0;
-        };
-    };  
-
+        }
+    }
         showPrompt(playerShips[counter]);
 }
 
@@ -542,9 +513,7 @@ function playerShipOrient(e) {
 
            currentShip += 1;    
         }
-
         counter += 1;
-
         return;
     }
 }
@@ -664,32 +633,27 @@ function shipDisplay(length, startElement, shipOrdin, currentField){
 function computerFieldCreation() {
 
     var randCell = Math.floor((Math.random() * 144));
-    var randShipOrient = Math.floor((Math.random() * 2));;
+    var randShipOrient = Math.floor((Math.random() * 2));
 
     if (checkForMistakes(randCell, currentField)) {
            
         shipDisplay(playerShips[currentShip], randCell, shipsOrdin[randShipOrient], currentField);
     } 
     else {
-
         computerFieldCreation();
     } 
-
-
 }
 
 function initialCompField() {
 
-
-    for (var i = 0; i < 144; i++) {
-        
+    for (var i = 0; i < 144; i++) {        
         computerField[i] = 0;
-    };
-    for (var i = 0; i < playerShips.length; i += 1) {
+    }
+    for (var j = 0; j < playerShips.length; j += 1) {
 
-        currentShip = i;
+        currentShip = j;
         computerFieldCreation();
-    };
+    }
 
     currentField = 'playerField';
 
