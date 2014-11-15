@@ -61,9 +61,9 @@ function checkForMistakes(cl, fieldName) {
  
     if (fieldName == 'field1') {
 
-        if(playerShipOrientation == 0) {
+        if(playerShipOrientation === 0) {
 
-            if(currentShip == 0) {
+            if(currentShip === 0) {
 
                 if  (cl == 10 || cl == 11 || cl == 12 || cl == 22 || cl == 23 ||
                     cl == 24 || cl == 34 || cl == 35 || cl == 36 || cl == 46 ||
@@ -94,8 +94,9 @@ function checkForMistakes(cl, fieldName) {
                      cl == 71 || cl == 95 || cl == 107 || cl == 119 || cl == 131 ||
                      cl == 143 || cl == 10 || cl == 22 || cl == 34 || cl == 46  ||
                      cl == 58 || cl == 70 || cl == 94 || cl == 106 || cl == 118 ||
-                     cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) || (playerField[parseInt(cl) + 1] !== 0)
-                  || (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {                 
+                     cl == 130 || cl == 142) || ((playerField[parseInt(cl)] !== 0) ||
+                      (playerField[parseInt(cl) + 1] !== 0) || 
+                      (playerField[parseInt(cl) + 2] !== 0) || cl == 'wrapper' || cl == 'field1')) {                 
                      alert('Wrong FIeld Try Another One');
 
                      right = false;
